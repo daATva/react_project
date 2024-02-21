@@ -1,0 +1,43 @@
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+  
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+  
+      .logo-group {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .logo{
+            width: 45px;
+            padding: 0px 10px 0px 0px;
+        }
+        a {
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+  
+      .nav-links {
+        list-style: none;
+        display: flex;
+  
+        li {
+          margin-left: 1rem;
+  
+          a {
+            color: #fff;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
