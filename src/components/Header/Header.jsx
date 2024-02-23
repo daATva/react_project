@@ -1,19 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
-import logo from '../Imagies/logo.png'; // Импортируем логотип
+import logo from '../Imagies/logo.png';
 
 
 const Header = () => {
   return (
+
     <header className="header">
-      <nav>
+    <div className="container">
+    <nav>
         <div className="logo-group">
 
         <Link to="/">
         <img src={logo} alt="Logo" className="logo" /> 
         </Link> 
-        
+
         <Link to="/">
         Frontend Sobes 
         </Link>
@@ -32,6 +34,8 @@ const Header = () => {
           </li>
         </ul>
       </nav>
+    </div>
+     
     </header>
   );
 };

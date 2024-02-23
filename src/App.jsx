@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import QuestionList from './components/QuestionList/QuestionList';
 import QuestionDetails from './components/QuestionDetails/QuestionDetails';
+import PageContainer from './pages/PageContainer/PageContainer';
 import './App.scss';
 
 const App = () => {
@@ -13,11 +14,13 @@ const App = () => {
       <div className="app">
         <Header />
         <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/interview" element={<QuestionList />} />
-            <Route path="/interview/:id" element={<QuestionDetails />} />
-          </Routes>
+        <PageContainer>
+            <Routes>
+              <Route path="/" element={<PageContainer><Home /></PageContainer>} />
+              <Route path="/interview" element={<PageContainer><QuestionList /></PageContainer>} />
+              <Route path="/interview/:id" element={<PageContainer><QuestionDetails /></PageContainer>} />
+            </Routes>
+        </PageContainer>
         </main>
         <Footer />
       </div>
