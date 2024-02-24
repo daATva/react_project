@@ -1,7 +1,7 @@
 // index.jsx
 
 import { combineReducers } from 'redux';
-import usersReducer from './user';
+import usersReducer from './favoritesReducer';
 
 const rootReducer = combineReducers({
   users: usersReducer  

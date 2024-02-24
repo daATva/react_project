@@ -1,14 +1,15 @@
 import React from 'react';
-
+import './Form.scss';
 function Form() {
-    const [username, setUsername] = useState('');
-  
-    const handleChange = (e) => {
-      setUsername(e.target.value);
-    }
-    console.log(handleChange)
-  
-
+    return (
+        <form>
+          <input 
+            type="text"
+            // value={username}
+            // onChange={handleChange} 
+          />
+        </form>
+      )
 }
 
 export default Form;
