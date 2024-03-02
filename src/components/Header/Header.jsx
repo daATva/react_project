@@ -23,14 +23,18 @@ const Header = () => {
         
         <ul className="nav-links">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Личный кабинет</Link>
           </li>
           <li>
-            <Link to="/interview">Interview</Link>
+            <Link to="/about">Новости</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/interview">Обучение</Link>
           </li>
+          <li>
+            <Link to="/about">Тесты</Link>
+          </li>
+
         </ul>
       </nav>
     </div>

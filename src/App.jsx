@@ -14,16 +14,14 @@ const App = () => {
       <div className="app">
         <Header />
         <main>
-        <PageContainer>
-            <Routes>
-              <Route path="/" element={<PageContainer><Home /></PageContainer>} />
-              <Route path="/interview" element={<PageContainer><QuestionList /></PageContainer>} />
-              <Route path="/interview/:id" element={<PageContainer><QuestionDetails /></PageContainer>} />
-            </Routes>
-        </PageContainer>
+          <Routes>
+            <Route path="/" element={<PageContainer><Home /></PageContainer>} />
+            <Route path="/interview" element={<PageContainer><QuestionList /></PageContainer>} />
+            <Route path="/interview/:id" element={<PageContainer><QuestionDetails /></PageContainer>} />
+          </Routes>
         </main>
-        <Footer />
       </div>
+      <Footer />
     </Router>
   );
 };
