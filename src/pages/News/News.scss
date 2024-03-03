@@ -1,0 +1,115 @@
+.news {
+
+  text-align: center;
+  padding: 2rem;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+
+  &__content{
+    &__persons{
+      display: flex;
+      flex-wrap: wrap;
+      flex: 0 1 auto;
+      gap: 20px;
+
+    }
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    
+  }
+
+  &__group {
+    
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center; 
+    height: 140px;
+    padding: 1rem;
+    h3, h4 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      margin: 0.5rem 0;
+    }
+
+    span {
+      font-size: 0.9rem;
+    }
+  }
+
+  &__circle {
+    width: 80px;
+    height: 80px;
+    background-color: #333;
+    border-radius: 50%;
+    margin: 0 20px;
+
+    p {
+      text-align: center;
+      display: inline-block; 
+      padding: 80px 0px 0px 0px;
+    }
+  }
+  button {
+    background-color: #333;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+}
+
+.event{
+
+  &__item {
+
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: #f0f0f0;
+    padding: 10px 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 200px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    h4{
+      font-size: 1.1rem;
+      padding: 0px 15px 0px 15px;
+      max-width: 150px;
+      display: block;
+      flex: 1 1 auto;
+    }
+
+
+    span {
+    align-self: start;
+    font-weight: bold;
+  }
+
+  &Name {
+    font-size: 1rem;
+  }
+  }
+}
+
+.news__events__content{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  flex: 0 1 25%;
+  
+}
