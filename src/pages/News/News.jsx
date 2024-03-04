@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from'../../components/Form/Form';
 import './News.scss';
+import Slider from 'react-slick';
 
 const NewsItem = ({ title, description, date }) => (
   <div className="news__item">
@@ -25,10 +26,36 @@ const EventItem = ({ eventName, eventDate }) => (
 );
 
 const News = () => {
+  const settings = {  
+    dots: true, 
+        infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <div className="news">
       <h1>Это новости</h1>
-
+      
       <div className="news__content">
         <div className="news__content__persons">
           <div className="news__group">
@@ -60,6 +87,7 @@ const News = () => {
         <div className="news__course">
         {/* Примеры блоков с новостями */}
         <NewsItem
+        
           title="Новая методика обучения"
           description="Краткое описание новой методики обучения, которая поможет..."
           date="12.03.2023"
@@ -68,18 +96,16 @@ const News = () => {
         </div>
         <div className="news__events__section">
          <h2>Предстоящие мероприятия</h2>
-         <div className="news__events__content">
-            {upcomingEvents.map((event, index) => (
-              <EventItem key={index} eventName={event.eventName} eventDate={event.eventDate} />
-            ))}
-         </div>
+        
        </div>
+       
       </div>
         
 {/* 
       <button>Get Started</button>
 
       <Form/> */}
+      
     </div>
   );
 };
