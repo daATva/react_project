@@ -5,40 +5,33 @@ import logo from '../Imagies/logo.png';
 
 const Header = () => {
   return (
-
     <header className="header">
-    <div className="container">
-    <nav>
-        <div className="logo-group">
+      <div className="container">
+        <nav>
+          <div className="logo-group">
+            <Link to="/">
+              <img src={logo} alt="Logo" className="logo" />
+            </Link>
 
-        <Link to="/">
-        <img src={logo} alt="Logo" className="logo" /> 
-        </Link> 
+            <Link to="/">Frontend Sobes</Link>
+          </div>
 
-        <Link to="/">
-        Frontend Sobes 
-        </Link>
-          
-        </div>
-        
-        <ul className="nav-links">
-          <li>
-            <Link to="/">Личный кабинет</Link>
-          </li>
-          <li>
-            <Link to="/News">Новости</Link>
-          </li>
-          <li>
-            <Link to="/interview">Обучение</Link>
-          </li>
-          <li>
-            <Link to="/about">Тесты</Link>
-          </li>
-
-        </ul>
-      </nav>
-    </div>
-     
+          <ul className="nav-links">
+            <li>
+              <Link to="/">Личный кабинет</Link>
+            </li>
+            <li>
+              <Link to="/News">Новости</Link>
+            </li>
+            <li>
+              <Link to="/interview">Обучение</Link>
+            </li>
+            <li>
+              <Link to="/about">Тесты</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 };

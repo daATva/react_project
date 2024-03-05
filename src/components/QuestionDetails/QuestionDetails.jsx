@@ -36,10 +36,16 @@ const QuestionDetails = () => {
       <h2>{question.question}</h2>
       {/* Показываем параграф с ответом только если showAnswer равно true */}
       {showAnswer && <p>{question.answer}</p>}
-      <div> 
-        <button className='know-button' onClick={handleKnowClick}>Знаю</button>
-        <button className='dont-know-button' onClick={handleDontKnowClick}>Не знаю</button>
-        <button className='show-answer-button' onClick={handleAnswerClick}>Посмотреть ответ</button>
+      <div>
+        <button className="know-button" onClick={handleKnowClick}>
+          Знаю
+        </button>
+        <button className="dont-know-button" onClick={handleDontKnowClick}>
+          Не знаю
+        </button>
+        <button className="show-answer-button" onClick={handleAnswerClick}>
+          Посмотреть ответ
+        </button>
       </div>
     </div>
   );

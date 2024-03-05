@@ -1,12 +1,12 @@
 // src/reducers/users.js
 
 const initialState = {
-    list: []  
+  list: [],
+};
+
+export default function usersReducer(state = initialState, action) {
+  switch (action.type) {
+    default:
+      return state;
   }
-  
-  export default function usersReducer(state = initialState, action) {
-    switch(action.type) {
-      default: 
-        return state;
-    }
-  }
+}

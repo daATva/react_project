@@ -17,10 +17,38 @@ const App = () => {
         <Header />
         <main>
           <Routes>
-            <Route path="/" element={<PageContainer><Home /></PageContainer>} />
-            <Route path="/News" element={<PageContainer><News /></PageContainer>} />
-            <Route path="/interview" element={<PageContainer><QuestionList /></PageContainer>} />
-            <Route path="/interview/:id" element={<PageContainer><QuestionDetails /></PageContainer>} />
+            <Route
+              path="/"
+              element={
+                <PageContainer>
+                  <Home />
+                </PageContainer>
+              }
+            />
+            <Route
+              path="/News"
+              element={
+                <PageContainer>
+                  <News />
+                </PageContainer>
+              }
+            />
+            <Route
+              path="/interview"
+              element={
+                <PageContainer>
+                  <QuestionList />
+                </PageContainer>
+              }
+            />
+            <Route
+              path="/interview/:id"
+              element={
+                <PageContainer>
+                  <QuestionDetails />
+                </PageContainer>
+              }
+            />
           </Routes>
         </main>
       </div>

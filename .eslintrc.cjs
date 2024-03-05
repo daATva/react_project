@@ -27,7 +27,7 @@ module.exports = {
   plugins: ['react , prettier'],
   rules: {
     'prettier:prettier': [
-      'warn',
+      'error',
       {
         endOfLine: 'auto',
       },

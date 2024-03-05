@@ -42,8 +42,8 @@ const QuestionList = () => {
     <div className="question-list">
       <h2>Frontend Interview Questions</h2>
       <ul>
-        {questions.map((question) => (
-          <li key={question.id}>
+        {questions.map((question, index) => (
+          <li key={`${question.id}-${index}`}>
             <Link onClick={() => openModal(question)}>{question.question}</Link>
           </li>
         ))}
