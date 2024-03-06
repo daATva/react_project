@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Modal from 'react-modal';
+import Modal from 'react-modal'; // Импорт библиотеки react-modal
+import EventModal from '../Modal/Modal'; // Импорт нашего компонента
 import './Slider.scss';
 
 const EventItem = ({ eventName, eventDate, onItemClick }) => (
@@ -82,19 +83,15 @@ const Slider = ({ events }) => {
         ))}
       </div>
       <button onClick={goToNext}>&gt;</button>
-      <Modal
+      <EventModal
         isOpen={modalOpen}
         onRequestClose={closeModal}
         contentLabel="Event Details"
-        style={{ content: { maxWidth: '400px', margin: '0 auto' } }}
-      >
-        <h3>{selectedEvent?.eventName}</h3>
-        <div className="modal-buttons">
-          <button onClick={handleKnowClick}>Знаю</button>
-          <button onClick={handleDontKnowClick}>Не знаю</button>
-          <button onClick={handleThinkClick}>Подумаю</button>
-        </div>
-      </Modal>
+        eventName={selectedEvent?.eventName}
+        onConfirm={handleKnowClick}
+        onDecline={handleDontKnowClick}
+        onThink={handleThinkClick}
+      />
     </div>
   );
 };
