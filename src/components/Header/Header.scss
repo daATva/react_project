@@ -6,6 +6,7 @@ body {
   color: #fff;
   padding: 1rem;
   border-radius: 0px 20px 20px 0px;
+  min-width: 232px;
   nav {
     display: flex;
     flex-direction: column;
@@ -33,6 +34,7 @@ body {
     }
 
     .nav-links {
+      padding: 0px 10px 0px 27px;
       list-style: none;
       display: flex;
       flex-direction: column;

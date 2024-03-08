@@ -1,7 +1,9 @@
 import React from 'react';
-import Form from '../../components/Form/Form';
 import Slider from '../../components/Slider/Slider';
 import './News.scss';
+import Form from '../../components/Form/Form';
+import { upcomingEvents } from '../../data/upcomingEvents.js';
+// import { questions } from '../../data/upcomingEvents.js';
 
 const NewsItem = ({ title, description, date }) => (
   <div className="news__item">
@@ -11,19 +13,10 @@ const NewsItem = ({ title, description, date }) => (
   </div>
 );
 
-const upcomingEvents = [
-  { eventName: 'Вебинар по мотивации', eventDate: '15.03.2024' },
-  { eventName: 'Тренинг по продажам', eventDate: '22.03.2024' },
-  { eventName: 'Мастер-класс по управлению временем', eventDate: '30.03.2024' },
-  { eventName: 'Тренинг по скипасу', eventDate: '08.04.2024' },
-  { eventName: 'Тренировка в зале', eventDate: '21.04.2024' },
-  { eventName: 'Прокачка софт скиллов в команде', eventDate: '30.04.2024' },
-];
-
 const News = () => {
   return (
     <div className="news">
-      <h1>Это новости</h1>
+      <h2>Сотрудники месяца</h2>
 
       <div className="news__content">
         <div className="news__content__persons">
@@ -67,9 +60,7 @@ const News = () => {
           </div>
         </div>
       </div>
-
-      {/* <button>Get Started</button> */}
-
+      <h3>Предложить мероприятие</h3>
       <Form />
     </div>
   );

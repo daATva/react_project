@@ -1,3 +1,5 @@
+// EventModal.jsx
+
 import React from 'react';
 import Modal from 'react-modal';
 import './Modal.scss';
@@ -6,8 +8,8 @@ const EventModal = ({
   isOpen,
   onRequestClose,
   contentLabel,
-  style,
   eventName,
+  eventImage,
   onConfirm,
   onDecline,
   onThink,
@@ -19,18 +21,36 @@ const EventModal = ({
       contentLabel={contentLabel}
       style={{
         content: {
-          maxWidth: '500px',
-          margin: 'auto auto',
-          borderRadius: 20,
+          maxWidth: '600px',
+          margin: 'auto',
+          borderRadius: '20px',
           maxHeight: '700px',
+          background: `url(${eventImage})`,
+          backgroundSize: 'cover',
+          backdropFilter: 'blur(8px)',
+          position: 'relative', // Добавляем для возможности использования абсолютного позиционирования внутри
         },
       }}
+      overlayClassName="modal-overlay"
     >
-      <h3>{eventName}</h3>
+      <div style={{ textAlign: 'center' }}>
+        <h3>{eventName}</h3>
+        <img
+          src={eventImage}
+          alt={eventName}
+          style={{ maxWidth: '100px', borderRadius: '10px' }}
+        />
+      </div>
       <div className="modal-buttons">
-        <button onClick={onConfirm}>Знаю</button>
-        <button onClick={onDecline}>Не знаю</button>
-        <button onClick={onThink}>Подумаю</button>
+        <button className="know-button" onClick={onConfirm}>
+          Знаю
+        </button>
+        <button className="close-button" onClick={onDecline}>
+          Не знаю
+        </button>
+        <button className="remind-button" onClick={onThink}>
+          Подумаю
+        </button>
       </div>
     </Modal>
   );

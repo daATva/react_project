@@ -13,7 +13,7 @@ const Header = () => {
               <img src={logo} alt="Logo" className="logo" />
             </Link>
 
-            <Link to="/">Frontend Sobes</Link>
+            <Link to="/">Soft Up</Link>
           </div>
 
           <ul className="nav-links">

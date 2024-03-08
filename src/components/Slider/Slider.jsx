@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import Modal from 'react-modal'; // Импорт библиотеки react-modal
-import EventModal from '../Modal/Modal'; // Импорт нашего компонента
+import Modal from 'react-modal';
+import EventModal from '../Modal/Modal';
 import './Slider.scss';
 
-const EventItem = ({ eventName, eventDate, onItemClick }) => (
+const EventItem = ({ eventName, eventDate, eventImage, onItemClick }) => (
   <div className="event__item" onClick={() => onItemClick(eventName)}>
-    <h4>{eventName}</h4>
-    <span>{eventDate}</span>
+    <img src={eventImage} alt={eventName} />
+    <div className="event__text">
+      <h4>{eventName}</h4>
+      <span>{eventDate}</span>
+    </div>
   </div>
 );
 
@@ -15,7 +18,7 @@ const Slider = ({ events }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
-  const slidesToShow = 4;
+  const slidesToShow = 3;
 
   useEffect(() => {
     Modal.setAppElement('#root');
@@ -78,6 +81,7 @@ const Slider = ({ events }) => {
             key={index}
             eventName={event.eventName}
             eventDate={event.eventDate}
+            eventImage={event.eventImage}
             onItemClick={openModal}
           />
         ))}
@@ -86,8 +90,8 @@ const Slider = ({ events }) => {
       <EventModal
         isOpen={modalOpen}
         onRequestClose={closeModal}
-        contentLabel="Event Details"
         eventName={selectedEvent?.eventName}
+        eventImage={selectedEvent?.eventImage} // передача изображения события
         onConfirm={handleKnowClick}
         onDecline={handleDontKnowClick}
         onThink={handleThinkClick}

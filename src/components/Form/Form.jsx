@@ -1,24 +1,23 @@
 import React from 'react';
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import './Form.scss';
 
 function Form() {
-  const [inputValue, setInputValue] = useState(''); // Состояние для хранения значения input
+  const { register, handleSubmit } = useForm();
 
-  // Функция для обработки изменений в input
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
+  // Функция для обработки отправки формы
+  const onSubmit = (data) => {
+    console.log(data);
+    // Можно добавить логику для отправки данных на сервер
   };
 
   return (
-    <form className="animatedForm">
+    <form className="animatedForm" onSubmit={handleSubmit(onSubmit)}>
       <input
         type="text"
-        value={inputValue}
-        onChange={handleChange}
+        {...register('inputValue', { required: true })}
         placeholder="Введите что-нибудь..."
       />
-      {/* Можно добавить кнопку для отправки формы */}
       <button type="submit">Отправить</button>
     </form>
   );

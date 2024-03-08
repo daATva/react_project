@@ -1,11 +1,8 @@
 import { createStore, applyMiddleware } from 'redux';
-import { thunk } from 'redux-thunk'; // Исправлено для использования именованного импорта
+import { thunk } from 'redux-thunk';
 import rootReducer from '../reducers';
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(thunk) // Используйте именованный импорт
-);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 console.log(store);
 

@@ -1,67 +1,75 @@
 .event {
   &__item {
+    min-width: 150px;
+    min-height: 170px;
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: start;
-    background-color: #f0f0f0;
-    padding: 10px 10px;
-    border-radius: 10px;
+    padding: 45px;
+    border-radius: 20px; // Объединяем два свойства border-radius в одно для избежания дублирования
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-width: 200px;
     flex-wrap: wrap;
     flex-direction: column;
-    transition: all 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out; // Оптимизация transition, применяем только к transform
     cursor: pointer;
+    position: relative; // Для позиционирования контента поверх изображения
+    overflow: hidden;
+    img {
+      border-radius: 20px;
+      max-width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
     &:hover {
-      background-color: #e0e0e0;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       transform: scale(1.05);
-      border-color: #ccc;
-      background-color: #e0e0e0;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      p {
-        color: #333;
-      }
-    }
-    h4 {
-      font-size: 1.1rem;
-      padding: 0px 15px 0px 15px;
-      max-width: 150px;
-      display: flex;
-      align-items: center;
-      flex: 1 1 auto;
     }
 
+    h4,
     span {
-      align-self: start;
-      font-weight: bold;
+      z-index: 2;
+      margin: 15px 0px 15px 0px;
     }
-
-    &Name {
-      font-size: 1rem;
-    }
+  }
+  &__text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 30px 30px 30px 30px;
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.6
+    ); // Добавляем полупрозрачный черный фон для лучшей видимости текста
+    color: #fff; // Цвет текста
+    padding: 10px; // Отступы вокруг текста
+    box-sizing: border-box; // Учитываем padding и border в общей ширине и высоте
+    width: 100%;
   }
 }
 
-.news__events__content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  flex: 0 1 25%;
-}
-.slider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+.news__events__content,
+.slider,
 .slider__content {
   display: flex;
   gap: 20px;
-  width: 100%;
-  overflow: hidden;
-  text-align: center;
   justify-content: center;
+  align-items: center;
+}
+
+.news__events__content {
+  flex-wrap: wrap;
+}
+
+.slider__content {
   flex-wrap: wrap;
 }

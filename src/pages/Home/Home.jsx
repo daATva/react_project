@@ -8,7 +8,7 @@ const Home = () => {
     <div className="home">
       <h1>Добро пожаловать в личный кабинет</h1>
       <p>Нужно исправить паддинг тут</p>
-      <button>Get Started</button>
+      {/* <button>Get Started</button> */}
       <Form />
     </div>
   );

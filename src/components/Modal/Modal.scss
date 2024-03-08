@@ -1,3 +1,42 @@
-content {
-  max-width: 300px;
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+button {
+  display: flex;
+  background-color: #333;
+  color: #fff;
+  padding: 0.8rem 1.4rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  &.know-button {
+    background-color: #4caf50; /* Green */
+    color: #fff;
+  }
+
+  &.dont-know-button {
+    background-color: #f44336;
+    color: #fff;
+  }
+
+  &.remind-button {
+    background-color: #ffa600;
+    color: #fff;
+  }
+  &.close-button {
+    background-color: #f44336;
+    color: #fff;
+  }
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
 }
