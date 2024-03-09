@@ -1,31 +1,52 @@
 body {
   background-color: #dfdfdf0f;
 }
+
 .header {
   background-color: #1d1c21e6;
   color: #fff;
   padding: 1rem;
   border-radius: 0px 20px 20px 0px;
   min-width: 232px;
+  display: block;
+  animation: slideDown 0.5s ease-in-out; // Анимация появления
+
+  @media (max-width: 1024px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: none;
+    border-radius: 0px 0px 20px 20px;
+    animation: slideUp 0.5s ease-in-out; // Анимация удаления
+  }
+
+  &.show {
+    display: block;
+    animation: slideDown 0.5s ease-in-out; // Анимация появления
+  }
+
   nav {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    max-width: 350px;
+    flex-direction: column;
+    align-items: center;
+    max-width: 264px;
     margin: 0 auto;
+    position: relative;
 
     .logo-group {
       font-size: 1.5rem;
       font-weight: bold;
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 0 auto;
+
       .logo {
         width: 45px;
         padding: 0px 10px 0px 0px;
       }
+
       a {
         color: #fff;
         text-decoration: none;
@@ -34,28 +55,75 @@ body {
     }
 
     .nav-links {
-      padding: 0px 10px 0px 27px;
       list-style: none;
       display: flex;
       flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      text-align: center;
+      padding: 0px;
+      top: 100%;
+      left: 0;
+      width: 100%;
       flex-wrap: wrap;
+      margin: 0;
 
-      ul {
-        padding: 0px;
-        display: flex;
-        align-items: end;
-        flex-direction: row;
+      @media (max-width: 1024px) {
+        z-index: 1;
       }
+
       li {
-        margin-left: 0.2rem;
+        margin: 0px 0px 0px 3.4rem;
         font-size: 20px;
-        padding: 0px 0px 10px 12px;
+        padding: 10px 5px 0px 5px;
 
         a {
           color: #fff;
           text-decoration: none;
+          font-size: 1.3rem;
+          padding: 0px 5px 13px 5px;
         }
       }
     }
+
+    @media (max-width: 1024px) {
+      .nav-links.show {
+        display: flex;
+      }
+    }
+  }
+}
+
+.burger-menu {
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+  border-radius: 20px;
+
+  @media (max-width: 1024px) {
+    display: block;
+    font-size: 1.5rem;
+    border-radius: 20px 20px 20px 20px;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
   }
 }

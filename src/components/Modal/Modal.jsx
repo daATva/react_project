@@ -20,37 +20,66 @@ const EventModal = ({
       onRequestClose={onRequestClose}
       contentLabel={contentLabel}
       style={{
+        overlay: {
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          padding: '0px 10px 0px 10px',
+        },
         content: {
-          maxWidth: '600px',
+          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+
+          maxWidth: '90vw', // Максимальная ширина 90% от ширины окна просмотра
+          maxHeight: '90vh', // Максимальная высота 90% от высоты окна просмотра
+          width: '450px', // Желаемая ширина, если позволяет окно просмотра
+          height: '900px', // Желаемая высота, если позволяет окно просмотра
           margin: 'auto',
           borderRadius: '20px',
-          maxHeight: '700px',
-          background: `url(${eventImage})`,
-          backgroundSize: 'cover',
-          backdropFilter: 'blur(8px)',
-          position: 'relative', // Добавляем для возможности использования абсолютного позиционирования внутри
+          position: 'relative',
+          border: '0px',
+          inset: '0',
         },
       }}
       overlayClassName="modal-overlay"
     >
-      <div style={{ textAlign: 'center' }}>
-        <h3>{eventName}</h3>
+      <div className="blurred-background">
         <img
           src={eventImage}
           alt={eventName}
-          style={{ maxWidth: '100px', borderRadius: '10px' }}
+          style={{
+            backgroundSize: '20%',
+            filter: 'blur(15px)',
+          }}
         />
       </div>
-      <div className="modal-buttons">
-        <button className="know-button" onClick={onConfirm}>
-          Знаю
-        </button>
-        <button className="close-button" onClick={onDecline}>
-          Не знаю
-        </button>
-        <button className="remind-button" onClick={onThink}>
-          Подумаю
-        </button>
+      <div className="modal-content">
+        <div style={{ textAlign: 'center' }}>
+          <img
+            src={eventImage}
+            alt={eventName}
+            style={{
+              margin: '50px 0px 0px 0px',
+              maxWidth: '70%',
+              maxHeight: '100%',
+              borderRadius: '15px',
+            }}
+          />
+          <h1>{eventName}</h1>
+        </div>
+        <div className="modal-buttons">
+          <button className="know-button" onClick={onConfirm}>
+            Знаю
+          </button>
+          <button className="close-button" onClick={onDecline}>
+            Не знаю
+          </button>
+          <button className="remind-button" onClick={onThink}>
+            Подумаю
+          </button>
+        </div>
       </div>
     </Modal>
   );

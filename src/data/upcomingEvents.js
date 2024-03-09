@@ -1,6 +1,6 @@
-import eventImage from '../components/Imagies/slider-motivation__img.jpg';
-import eventImage1 from '../components/Imagies/slider-sell__img.jpg';
-import eventImage2 from '../components/Imagies/slider-time__img.jpg';
+import eventImage from '../components/Imagies/slider-motivation__img.png';
+import eventImage1 from '../components/Imagies/slider-sell__img.png';
+import eventImage2 from '../components/Imagies/slider-time__img.png';
 
 export const upcomingEvents = [
   {
