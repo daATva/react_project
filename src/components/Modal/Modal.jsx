@@ -71,10 +71,10 @@ const EventModal = ({
         </div>
         <div className="modal-buttons">
           <button className="know-button" onClick={onConfirm}>
-            Знаю
+            Пойду
           </button>
           <button className="close-button" onClick={onDecline}>
-            Не знаю
+            Не пойду
           </button>
           <button className="remind-button" onClick={onThink}>
             Подумаю

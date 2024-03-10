@@ -5,7 +5,6 @@ import './Form.scss';
 function Form() {
   const { register, handleSubmit } = useForm();
 
-  // Функция для обработки отправки формы
   const onSubmit = (data) => {
     console.log(data);
     // Можно добавить логику для отправки данных на сервер

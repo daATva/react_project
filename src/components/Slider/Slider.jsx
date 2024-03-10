@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import EventModal from '../Modal/Modal';
+import { useDispatch, useSelector } from 'react-redux';
 import './Slider.scss';
+import { fetchEvents } from '../../store/actions/action';
 
 const EventItem = ({ eventName, eventDate, eventImage, onItemClick }) => (
   <div className="event__item" onClick={() => onItemClick(eventName)}>
@@ -13,16 +15,25 @@ const EventItem = ({ eventName, eventDate, eventImage, onItemClick }) => (
   </div>
 );
 
-const Slider = ({ events }) => {
+const Slider = () => {
+  const dispatch = useDispatch();
+  const events = useSelector((state) => state.events.events);
+
+  useEffect(() => {
+    dispatch(fetchEvents());
+  }, [dispatch]);
+
+  // Исправлено: Получаем состояние events из Redux store и обеспечиваем его актуализацию.
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
-  const slidesToShow = 3;
-
   useEffect(() => {
     Modal.setAppElement('#root');
   }, []);
+
+  const slidesToShow = 3;
 
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) =>
@@ -37,8 +48,8 @@ const Slider = ({ events }) => {
   };
 
   const openModal = (eventName) => {
-    const selectedEvent = events.find((event) => event.eventName === eventName);
-    setSelectedEvent(selectedEvent);
+    const event = events.find((e) => e.eventName === eventName);
+    setSelectedEvent(event);
     setModalOpen(true);
   };
 
@@ -47,30 +58,8 @@ const Slider = ({ events }) => {
     setSelectedEvent(null);
   };
 
-  const handleKnowClick = () => {
-    console.log(`Знаю: ${selectedEvent.eventName}`);
-    closeModal();
-  };
-
-  const handleDontKnowClick = () => {
-    console.log(`Не знаю: ${selectedEvent.eventName}`);
-    closeModal();
-  };
-
-  const handleThinkClick = () => {
-    console.log(`Подумаю: ${selectedEvent.eventName}`);
-    closeModal();
-  };
-
-  const endIndex =
-    currentIndex + slidesToShow >= events.length
-      ? events.length
-      : currentIndex + slidesToShow;
-  const currentEvents = events.slice(currentIndex, endIndex);
-
-  while (currentEvents.length < slidesToShow) {
-    currentEvents.push(...events.slice(0, slidesToShow - currentEvents.length));
-  }
+  // Исправлено: Подсчет текущих событий для отображения с учетом текущего индекса и количества слайдов.
+  const currentEvents = events.slice(currentIndex, currentIndex + slidesToShow);
 
   return (
     <div className="slider">
@@ -91,10 +80,10 @@ const Slider = ({ events }) => {
         isOpen={modalOpen}
         onRequestClose={closeModal}
         eventName={selectedEvent?.eventName}
-        eventImage={selectedEvent?.eventImage} // передача изображения события
-        onConfirm={handleKnowClick}
-        onDecline={handleDontKnowClick}
-        onThink={handleThinkClick}
+        eventImage={selectedEvent?.eventImage}
+        onConfirm={() => closeModal()}
+        onDecline={() => closeModal()}
+        onThink={() => closeModal()}
       />
     </div>
   );

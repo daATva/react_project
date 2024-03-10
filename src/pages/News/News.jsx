@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from '../../components/Slider/Slider';
 import './News.scss';
 import Form from '../../components/Form/Form';
-import { upcomingEvents } from '../../data/upcomingEvents.js';
+// import { upcomingEvents } from '../../data/upcomingEvents.js';
 // import { questions } from '../../data/upcomingEvents.js';
 
 const NewsItem = ({ title, description, date }) => (
@@ -56,7 +56,7 @@ const News = () => {
         <div className="news__events__section">
           <h2>Предстоящие мероприятия</h2>
           <div className="news__events__content">
-            <Slider events={upcomingEvents} />
+            <Slider />
           </div>
         </div>
       </div>

@@ -1,10 +1,11 @@
-// index.jsx
-
+// src/store/reducers/index.js
 import { combineReducers } from 'redux';
-import usersReducer from './favoritesReducer';
+import eventsReducer from './eventsReducer';
+// Импортируйте другие редьюсеры при необходимости
 
 const rootReducer = combineReducers({
-  users: usersReducer,
+  events: eventsReducer,
+  // Добавьте другие редьюсеры здесь
 });
 
 export default rootReducer;

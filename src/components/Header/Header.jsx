@@ -12,12 +12,10 @@ const Header = () => {
 
   return (
     <>
-      {/* Кнопка бургер-меню */}
       <button onClick={toggleNav} className="burger-menu">
         &#9776;
       </button>
 
-      {/* Заголовок */}
       <header className={`header ${isNavVisible ? 'show' : ''}`}>
         <div className="container">
           <nav>

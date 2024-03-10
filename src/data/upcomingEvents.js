@@ -1,23 +1,22 @@
-import eventImage from '../components/Imagies/slider-motivation__img.png';
-import eventImage1 from '../components/Imagies/slider-sell__img.png';
-import eventImage2 from '../components/Imagies/slider-time__img.png';
-
 export const upcomingEvents = [
   {
     eventName: 'Вебинар по мотивации',
     eventDate: '15.03.2024',
-    eventImage: eventImage,
+    eventImage:
+      'http://localhost:5173/src/components/Imagies/slider-motivation__img.png',
   },
 
   {
     eventName: 'Тренинг по продажам',
     eventDate: '22.03.2024',
-    eventImage: eventImage1,
+    eventImage:
+      'http://localhost:5173/src/components/Imagies/slider-sell__img.png',
   },
   {
     eventName: 'Мастер-класс по управлению временем',
     eventDate: '30.03.2024',
-    eventImage: eventImage2,
+    eventImage:
+      'http://localhost:5173/src/components/Imagies/slider-time__img.png',
   },
   {
     eventName: 'Тренинг по скипасу',
