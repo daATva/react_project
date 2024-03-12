@@ -3,6 +3,7 @@ const initialState = {
   events: [],
   loading: false,
   error: null,
+  courseData: [],
 };
 
 export default function eventsReducer(state = initialState, action) {
@@ -13,6 +14,11 @@ export default function eventsReducer(state = initialState, action) {
         events: action.payload,
         loading: false,
         error: null,
+      };
+    case 'FETCH_COURSE_DATA_SUCCESS':
+      return {
+        ...state,
+        courseData: action.payload,
       };
     case 'FETCH_EVENTS_FAILURE':
       return {

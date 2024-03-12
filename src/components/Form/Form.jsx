@@ -7,7 +7,6 @@ function Form() {
 
   const onSubmit = (data) => {
     console.log(data);
-    // Можно добавить логику для отправки данных на сервер
   };
 
   return (

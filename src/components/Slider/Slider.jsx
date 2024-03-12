@@ -1,12 +1,23 @@
+// Slider.jsx
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import EventModal from '../Modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import './Slider.scss';
 import { fetchEvents } from '../../store/actions/action';
+import Cookies from 'js-cookie'; // Ensure js-cookie is installed
 
-const EventItem = ({ eventName, eventDate, eventImage, onItemClick }) => (
-  <div className="event__item" onClick={() => onItemClick(eventName)}>
+const EventItem = ({
+  eventName,
+  eventDate,
+  eventImage,
+  onItemClick,
+  choice,
+}) => (
+  <div
+    className={`event__item ${choice}`}
+    onClick={() => onItemClick(eventName)}
+  >
     <img src={eventImage} alt={eventName} />
     <div className="event__text">
       <h4>{eventName}</h4>
@@ -23,27 +34,46 @@ const Slider = () => {
     dispatch(fetchEvents());
   }, [dispatch]);
 
-  // Исправлено: Получаем состояние events из Redux store и обеспечиваем его актуализацию.
+  const slidesToShow = 3; // Define the slidesToShow variable
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [choices, setChoices] = useState(() => {
+    const cookieChoices = Cookies.get('eventChoices');
+    return cookieChoices ? JSON.parse(cookieChoices) : {};
+  });
+
+  const handleChoice = (eventName, choiceClass) => {
+    const newChoices = { ...choices, [eventName]: choiceClass };
+    setChoices(newChoices);
+    Cookies.set('eventChoices', JSON.stringify(newChoices), { expires: 7 });
+    closeModal();
+  };
 
   useEffect(() => {
     Modal.setAppElement('#root');
-  }, []);
+    const clearCookies = () => {
+      Cookies.remove('eventChoices');
+      setChoices({});
+    };
 
-  const slidesToShow = 3;
+    // Устанавливаем интервал для очистки куки каждую минуту
+    const intervalId = setInterval(clearCookies, 60000);
+
+    // Очищаем интервал при размонтировании компонента
+    return () => clearInterval(intervalId);
+  }, []);
 
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex - 1 < 0 ? events.length - 1 : prevIndex - 1
+      prevIndex - 1 < 0 ? events.length - slidesToShow : prevIndex - 1
     );
   };
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex + 1 >= events.length ? 0 : prevIndex + 1
+      prevIndex + 1 > events.length - slidesToShow ? 0 : prevIndex + 1
     );
   };
 
@@ -58,7 +88,6 @@ const Slider = () => {
     setSelectedEvent(null);
   };
 
-  // Исправлено: Подсчет текущих событий для отображения с учетом текущего индекса и количества слайдов.
   const currentEvents = events.slice(currentIndex, currentIndex + slidesToShow);
 
   return (
@@ -72,19 +101,28 @@ const Slider = () => {
             eventDate={event.eventDate}
             eventImage={event.eventImage}
             onItemClick={openModal}
+            choice={choices[event.eventName]}
           />
         ))}
       </div>
       <button onClick={goToNext}>&gt;</button>
-      <EventModal
-        isOpen={modalOpen}
-        onRequestClose={closeModal}
-        eventName={selectedEvent?.eventName}
-        eventImage={selectedEvent?.eventImage}
-        onConfirm={() => closeModal()}
-        onDecline={() => closeModal()}
-        onThink={() => closeModal()}
-      />
+      {selectedEvent && (
+        <EventModal
+          isOpen={modalOpen}
+          onRequestClose={closeModal}
+          contentLabel="Event Modal"
+          eventName={selectedEvent.eventName}
+          eventImage={selectedEvent.eventImage}
+          onChoiceMade={(choiceClass) => {
+            const classMap = {
+              'know-button': 'know',
+              'close-button': 'dont-know',
+              'remind-button': 'remind',
+            };
+            handleChoice(selectedEvent.eventName, classMap[choiceClass]);
+          }}
+        />
+      )}
     </div>
   );
 };

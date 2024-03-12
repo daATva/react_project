@@ -58,15 +58,6 @@
     }
   }
   button {
-    display: flex;
-    justify-content: center;
-    color: #fff;
-    padding: 0.8rem 1.4rem;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 15px;
-    text-align: center;
-    cursor: pointer;
     &.know-button {
       background-color: #4caf50; /* Green */
       color: #fff;

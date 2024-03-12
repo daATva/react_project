@@ -3,7 +3,6 @@ import Slider from '../../components/Slider/Slider';
 import './News.scss';
 import Form from '../../components/Form/Form';
 // import { upcomingEvents } from '../../data/upcomingEvents.js';
-// import { questions } from '../../data/upcomingEvents.js';
 
 const NewsItem = ({ title, description, date }) => (
   <div className="news__item">

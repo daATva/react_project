@@ -19,12 +19,19 @@ export const fetchEvents = () => async (dispatch) => {
   }
 };
 
-export const addFavorite = (id) => ({
-  type: 'ADD_FAVORITE',
-  payload: id,
-});
-
-export const removeFavorite = (id) => ({
-  type: 'REMOVE_FAVORITE',
-  payload: id,
-});
+export const fetchCourseData = () => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      'https://65ede50f08706c584d9ad460.mockapi.io/slider-event/cour__data'
+    );
+    dispatch({
+      type: 'FETCH_COURSE_DATA_SUCCESS',
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: 'FETCH_COURSE_DATA_FAILURE',
+      payload: error,
+    });
+  }
+};

@@ -13,6 +13,7 @@ const EventModal = ({
   onConfirm,
   onDecline,
   onThink,
+  onChoiceMade,
 }) => {
   return (
     <Modal
@@ -70,13 +71,22 @@ const EventModal = ({
           <h1>{eventName}</h1>
         </div>
         <div className="modal-buttons">
-          <button className="know-button" onClick={onConfirm}>
+          <button
+            className="know-button"
+            onClick={() => onChoiceMade('know-button')}
+          >
             Пойду
           </button>
-          <button className="close-button" onClick={onDecline}>
+          <button
+            className="close-button"
+            onClick={() => onChoiceMade('close-button')}
+          >
             Не пойду
           </button>
-          <button className="remind-button" onClick={onThink}>
+          <button
+            className="remind-button"
+            onClick={() => onChoiceMade('remind-button')}
+          >
             Подумаю
           </button>
         </div>
