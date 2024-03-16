@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.scss';
-import logo from '../Imagies/logo.png';
+import logo from '/Imagies/header-logo.png';
+import news from '/Imagies/header-news.svg';
+import { ReactComponent as AccountIcon } from '/Imagies/header-private-account.svg';
+import test from '/Imagies/header-tests.svg';
 
 const Header = () => {
   const [isNavVisible, setIsNavVisible] = useState(false);
@@ -34,24 +37,38 @@ const Header = () => {
             </div>
             <ul className="nav-links">
               <li>
-                <Link to="/" onClick={() => navbarHide('/')}>
-                  Личный кабинет
-                </Link>
+                <div className="header-group">
+                  <AccountIcon fill="#fff" />
+                  <Link to="/" onClick={() => navbarHide('/')}>
+                    Личный кабинет
+                  </Link>
+                </div>
               </li>
               <li>
-                <Link to="/News" onClick={() => navbarHide('/News')}>
-                  Новости
-                </Link>
+                <div className="header-group">
+                  <img src={news} alt="news__logo" className="logo" />
+                  <Link to="/News" onClick={() => navbarHide('/News')}>
+                    Новости
+                  </Link>
+                </div>
               </li>
               <li>
-                <Link to="/interview" onClick={() => navbarHide('/interview')}>
-                  Обучение
-                </Link>
+                <div className="header-group">
+                  <Link
+                    to="/interview"
+                    onClick={() => navbarHide('/interview')}
+                  >
+                    Обучение
+                  </Link>
+                </div>
               </li>
               <li>
-                <Link to="/about" onClick={() => navbarHide('/about')}>
-                  Тесты
-                </Link>
+                <div className="header-group">
+                  <img src={test} alt="test__logo" className="logo" />
+                  <Link to="/about" onClick={() => navbarHide('/about')}>
+                    Тесты
+                  </Link>
+                </div>
               </li>
             </ul>
           </nav>

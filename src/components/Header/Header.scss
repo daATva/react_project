@@ -10,7 +10,23 @@ body {
   min-width: 232px;
   display: block;
   animation: slideDown 0.5s ease-in-out; // Анимация появления
-
+  &-group {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    svg {
+      fill: #000;
+      color: #000;
+    }
+    img {
+      display: flex;
+      align-items: center;
+      border: #fff;
+      width: 34px;
+      fill: #000;
+      color: #000;
+    }
+  }
   @media (max-width: 1024px) {
     position: fixed;
     top: 0;
@@ -43,6 +59,7 @@ body {
       align-items: center;
 
       .logo {
+        align-items: center;
         width: 45px;
         padding: 0px 10px 0px 0px;
       }
@@ -50,7 +67,8 @@ body {
       a {
         color: #fff;
         text-decoration: none;
-        text-align: center;
+        display: flex;
+        align-items: center;
       }
     }
 
@@ -81,7 +99,7 @@ body {
           color: #fff;
           text-decoration: none;
           font-size: 1.3rem;
-          padding: 0px 5px 13px 5px;
+          padding: 6px 5px 10px 7px;
         }
       }
     }
@@ -126,4 +144,9 @@ body {
   100% {
     transform: translateY(-100%);
   }
+}
+
+.logo {
+  fill: #000;
+  color: #000;
 }

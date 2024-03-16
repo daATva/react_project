@@ -1,27 +1,19 @@
 // Slider.jsx
+
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import EventModal from '../Modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import './Slider.scss';
 import { fetchEvents } from '../../store/actions/action';
-import Cookies from 'js-cookie'; // Ensure js-cookie is installed
+import Cookies from 'js-cookie';
 
-const EventItem = ({
-  eventName,
-  eventDate,
-  eventImage,
-  onItemClick,
-  choice,
-}) => (
-  <div
-    className={`event__item ${choice}`}
-    onClick={() => onItemClick(eventName)}
-  >
-    <img src={eventImage} alt={eventName} />
+const EventItem = ({ Name, startDate, Image, onItemClick, choice }) => (
+  <div className={`event__item ${choice}`} onClick={() => onItemClick(Name)}>
+    <img src={Image} alt={Name} />
     <div className="event__text">
-      <h4>{eventName}</h4>
-      <span>{eventDate}</span>
+      <h4>{Name}</h4>
+      <span>{startDate}</span>
     </div>
   </div>
 );
@@ -34,7 +26,7 @@ const Slider = () => {
     dispatch(fetchEvents());
   }, [dispatch]);
 
-  const slidesToShow = 3; // Define the slidesToShow variable
+  const slidesToShow = 3;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
@@ -44,8 +36,8 @@ const Slider = () => {
     return cookieChoices ? JSON.parse(cookieChoices) : {};
   });
 
-  const handleChoice = (eventName, choiceClass) => {
-    const newChoices = { ...choices, [eventName]: choiceClass };
+  const handleChoice = (Name, choiceClass) => {
+    const newChoices = { ...choices, [Name]: choiceClass };
     setChoices(newChoices);
     Cookies.set('eventChoices', JSON.stringify(newChoices), { expires: 7 });
     closeModal();
@@ -77,8 +69,8 @@ const Slider = () => {
     );
   };
 
-  const openModal = (eventName) => {
-    const event = events.find((e) => e.eventName === eventName);
+  const openModal = (Name) => {
+    const event = events.find((e) => e.Name === Name);
     setSelectedEvent(event);
     setModalOpen(true);
   };
@@ -97,11 +89,11 @@ const Slider = () => {
         {currentEvents.map((event, index) => (
           <EventItem
             key={index}
-            eventName={event.eventName}
-            eventDate={event.eventDate}
-            eventImage={event.eventImage}
+            Name={event.Name}
+            startDate={event.startDate}
+            Image={event.Image}
             onItemClick={openModal}
-            choice={choices[event.eventName]}
+            choice={choices[event.Name]}
           />
         ))}
       </div>
@@ -111,15 +103,15 @@ const Slider = () => {
           isOpen={modalOpen}
           onRequestClose={closeModal}
           contentLabel="Event Modal"
-          eventName={selectedEvent.eventName}
-          eventImage={selectedEvent.eventImage}
+          Name={selectedEvent.Name}
+          Image={selectedEvent.Image}
           onChoiceMade={(choiceClass) => {
             const classMap = {
               'know-button': 'know',
               'close-button': 'dont-know',
               'remind-button': 'remind',
             };
-            handleChoice(selectedEvent.eventName, classMap[choiceClass]);
+            handleChoice(selectedEvent.Name, classMap[choiceClass]);
           }}
         />
       )}

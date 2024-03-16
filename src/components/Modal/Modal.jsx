@@ -1,5 +1,4 @@
 // EventModal.jsx
-
 import React from 'react';
 import Modal from 'react-modal';
 import './Modal.scss';
@@ -8,11 +7,8 @@ const EventModal = ({
   isOpen,
   onRequestClose,
   contentLabel,
-  eventName,
-  eventImage,
-  onConfirm,
-  onDecline,
-  onThink,
+  Name,
+  Image,
   onChoiceMade,
 }) => {
   return (
@@ -32,11 +28,10 @@ const EventModal = ({
         },
         content: {
           backgroundColor: 'rgba(0, 0, 0, 0.7)',
-
-          maxWidth: '90vw', // Максимальная ширина 90% от ширины окна просмотра
-          maxHeight: '90vh', // Максимальная высота 90% от высоты окна просмотра
-          width: '450px', // Желаемая ширина, если позволяет окно просмотра
-          height: '900px', // Желаемая высота, если позволяет окно просмотра
+          maxWidth: '90vw',
+          maxHeight: '90vh',
+          width: '450px',
+          height: '900px',
           margin: 'auto',
           borderRadius: '20px',
           position: 'relative',
@@ -48,19 +43,16 @@ const EventModal = ({
     >
       <div className="blurred-background">
         <img
-          src={eventImage}
-          alt={eventName}
-          style={{
-            backgroundSize: '20%',
-            filter: 'blur(15px)',
-          }}
+          src={Image}
+          alt={Name}
+          style={{ backgroundSize: '20%', filter: 'blur(15px)' }}
         />
       </div>
       <div className="modal-content">
         <div style={{ textAlign: 'center' }}>
           <img
-            src={eventImage}
-            alt={eventName}
+            src={Image}
+            alt={Name}
             style={{
               margin: '50px 0px 0px 0px',
               maxWidth: '70%',
@@ -68,7 +60,7 @@ const EventModal = ({
               borderRadius: '15px',
             }}
           />
-          <h1>{eventName}</h1>
+          <h1>{Name}</h1>
         </div>
         <div className="modal-buttons">
           <button
