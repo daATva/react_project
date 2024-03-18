@@ -1,6 +1,6 @@
 // Slider.jsx
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import Modal from 'react-modal';
 import EventModal from '../Modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
@@ -86,35 +86,39 @@ const Slider = () => {
     <div className="slider">
       <button onClick={goToPrevious}>&lt;</button>
       <div className="slider__content">
-        {currentEvents.map((event, index) => (
-          <EventItem
-            key={index}
-            Name={event.Name}
-            startDate={event.startDate}
-            Image={event.Image}
-            onItemClick={openModal}
-            choice={choices[event.Name]}
-          />
-        ))}
+        <Suspense fallback={<div>Загрузка...</div>}>
+          {currentEvents.map((event, index) => (
+            <EventItem
+              key={index}
+              Name={event.Name}
+              startDate={event.startDate}
+              Image={event.Image}
+              onItemClick={openModal}
+              choice={choices[event.Name]}
+            />
+          ))}
+        </Suspense>
       </div>
       <button onClick={goToNext}>&gt;</button>
-      {selectedEvent && (
-        <EventModal
-          isOpen={modalOpen}
-          onRequestClose={closeModal}
-          contentLabel="Event Modal"
-          Name={selectedEvent.Name}
-          Image={selectedEvent.Image}
-          onChoiceMade={(choiceClass) => {
-            const classMap = {
-              'know-button': 'know',
-              'close-button': 'dont-know',
-              'remind-button': 'remind',
-            };
-            handleChoice(selectedEvent.Name, classMap[choiceClass]);
-          }}
-        />
-      )}
+      <Suspense fallback={<div>Загрузка...</div>}>
+        {selectedEvent && (
+          <EventModal
+            isOpen={modalOpen}
+            onRequestClose={closeModal}
+            contentLabel="Event Modal"
+            Name={selectedEvent.Name}
+            Image={selectedEvent.Image}
+            onChoiceMade={(choiceClass) => {
+              const classMap = {
+                'know-button': 'know',
+                'close-button': 'dont-know',
+                'remind-button': 'remind',
+              };
+              handleChoice(selectedEvent.Name, classMap[choiceClass]);
+            }}
+          />
+        )}
+      </Suspense>
     </div>
   );
 };

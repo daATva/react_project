@@ -14,17 +14,11 @@ body {
     font-size: 1.5rem;
     display: flex;
     align-items: center;
-    svg {
-      fill: #000;
-      color: #000;
-    }
     img {
       display: flex;
       align-items: center;
       border: #fff;
-      width: 34px;
-      fill: #000;
-      color: #000;
+      width: 32px;
     }
   }
   @media (max-width: 1024px) {
@@ -149,4 +143,10 @@ body {
 .logo {
   fill: #000;
   color: #000;
+}
+.icon * {
+  width: 10px;
+  clip: tomato;
+  fill: tomato;
+  stroke: tomato;
 }

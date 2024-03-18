@@ -3,8 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Header.scss';
 import logo from '/Imagies/header-logo.png';
 import news from '/Imagies/header-news.svg';
-import { ReactComponent as AccountIcon } from '/Imagies/header-private-account.svg';
+import account from '/Imagies/header-private-account.svg';
 import test from '/Imagies/header-tests.svg';
+import education from '/Imagies/header-education.svg';
 
 const Header = () => {
   const [isNavVisible, setIsNavVisible] = useState(false);
@@ -13,7 +14,6 @@ const Header = () => {
   const toggleNav = () => {
     setIsNavVisible(!isNavVisible);
   };
-
   const navbarHide = (path) => {
     navigate(path);
     setIsNavVisible(false);
@@ -38,7 +38,7 @@ const Header = () => {
             <ul className="nav-links">
               <li>
                 <div className="header-group">
-                  <AccountIcon fill="#fff" />
+                  <img className="icon" src={account} alt="Account Icon" />
                   <Link to="/" onClick={() => navbarHide('/')}>
                     Личный кабинет
                   </Link>
@@ -54,6 +54,8 @@ const Header = () => {
               </li>
               <li>
                 <div className="header-group">
+                  <img src={education} alt="education__logo" className="logo" />
+
                   <Link
                     to="/interview"
                     onClick={() => navbarHide('/interview')}
