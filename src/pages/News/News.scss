@@ -78,3 +78,79 @@
     }
   }
 }
+@media (max-width: 400px) {
+  .news {
+    padding: 0.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .news {
+    &__group {
+      height: 140px;
+      padding: 0.5rem;
+
+      h3,
+      h4 {
+        font-size: 1.2rem;
+      }
+
+      p {
+        font-size: 0.8rem;
+      }
+
+      span {
+        font-size: 0.7rem;
+      }
+    }
+
+    &__circle {
+      width: 60px;
+      height: 60px;
+      margin: 0 10px;
+
+      p {
+        padding: 60px 0px 0px 0px;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .news {
+    padding: 1rem;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    &__group {
+      height: 100px;
+      padding: 0.25rem;
+
+      h3,
+      h4 {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: 0.7rem;
+      }
+
+      span {
+        font-size: 0.6rem;
+      }
+    }
+
+    &__circle {
+      width: 40px;
+      height: 40px;
+      margin: 0 5px;
+
+      p {
+        padding: 40px 0px 0px 0px;
+        font-size: 0.6rem;
+      }
+    }
+  }
+}

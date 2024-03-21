@@ -93,3 +93,21 @@
 .slider__content {
   flex-wrap: wrap;
 }
+
+@media (max-width: 1024px) {
+  .event__item {
+    min-width: 100px;
+  }
+  .event__text {
+    width: 100%;
+  }
+  .slider {
+    gap: 5px;
+    button {
+      padding: 15px;
+    }
+  }
+  .news {
+    padding: 1rem;
+  }
+}

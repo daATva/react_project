@@ -1,32 +1,52 @@
-// Slider.jsx
-
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, {
+  useState,
+  useEffect,
+  lazy,
+  Suspense,
+  useMemo,
+  useCallback,
+} from 'react';
 import Modal from 'react-modal';
 import EventModal from '../Modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import './Slider.scss';
 import { fetchEvents } from '../../store/actions/action';
 import Cookies from 'js-cookie';
+import useWindowWidth from '../../utils/useWindowWidth';
 
-const EventItem = ({ Name, startDate, Image, onItemClick, choice }) => (
-  <div className={`event__item ${choice}`} onClick={() => onItemClick(Name)}>
-    <img src={Image} alt={Name} />
-    <div className="event__text">
-      <h4>{Name}</h4>
-      <span>{startDate}</span>
+const EventItem = React.memo(
+  ({ Name, startDate, Image, onItemClick, choice }) => (
+    <div className={`event__item ${choice}`} onClick={() => onItemClick(Name)}>
+      <img src={Image} alt={Name} />
+      <div className="event__text">
+        <h4>{Name}</h4>
+        <span>{startDate}</span>
+      </div>
     </div>
-  </div>
+  )
 );
 
 const Slider = () => {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.events.events);
+  const windowWidth = useWindowWidth();
 
   useEffect(() => {
     dispatch(fetchEvents());
   }, [dispatch]);
 
-  const slidesToShow = 3;
+  const [slidesToShow, setSlidesToShow] = useState(3);
+
+  useEffect(() => {
+    if (windowWidth < 1300) {
+      setSlidesToShow(2);
+    } else {
+      setSlidesToShow(3);
+    }
+    if (windowWidth < 761) {
+      setSlidesToShow(1);
+    }
+  }, [windowWidth]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
@@ -36,12 +56,15 @@ const Slider = () => {
     return cookieChoices ? JSON.parse(cookieChoices) : {};
   });
 
-  const handleChoice = (Name, choiceClass) => {
-    const newChoices = { ...choices, [Name]: choiceClass };
-    setChoices(newChoices);
-    Cookies.set('eventChoices', JSON.stringify(newChoices), { expires: 7 });
-    closeModal();
-  };
+  const handleChoice = useCallback(
+    (Name, choiceClass) => {
+      const newChoices = { ...choices, [Name]: choiceClass };
+      setChoices(newChoices);
+      Cookies.set('eventChoices', JSON.stringify(newChoices), { expires: 7 });
+      closeModal();
+    },
+    [choices, closeModal]
+  );
 
   useEffect(() => {
     Modal.setAppElement('#root');
@@ -50,37 +73,41 @@ const Slider = () => {
       setChoices({});
     };
 
-    // Устанавливаем интервал для очистки куки каждую минуту
     const intervalId = setInterval(clearCookies, 60000);
 
-    // Очищаем интервал при размонтировании компонента
     return () => clearInterval(intervalId);
   }, []);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex - 1 < 0 ? events.length - slidesToShow : prevIndex - 1
     );
-  };
+  }, [events.length, slidesToShow]);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex + 1 > events.length - slidesToShow ? 0 : prevIndex + 1
     );
-  };
+  }, [events.length, slidesToShow]);
 
-  const openModal = (Name) => {
-    const event = events.find((e) => e.Name === Name);
-    setSelectedEvent(event);
-    setModalOpen(true);
-  };
+  const openModal = useCallback(
+    (Name) => {
+      const event = events.find((e) => e.Name === Name);
+      setSelectedEvent(event);
+      setModalOpen(true);
+    },
+    [events]
+  );
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setModalOpen(false);
     setSelectedEvent(null);
-  };
+  }, []);
 
-  const currentEvents = events.slice(currentIndex, currentIndex + slidesToShow);
+  const currentEvents = useMemo(
+    () => events.slice(currentIndex, currentIndex + slidesToShow),
+    [events, currentIndex, slidesToShow]
+  );
 
   return (
     <div className="slider">

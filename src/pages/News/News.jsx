@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Slider from '../../components/Slider/Slider';
 import './News.scss';
 import Form from '../../components/Form/Form';
@@ -11,7 +11,7 @@ const NewsItem = ({ title, description, date }) => (
     <span>{date}</span>
   </div>
 );
-
+const SliderLoading = lazy(() => import('./../../components/Slider/Slider'));
 const News = () => {
   return (
     <div className="news">
@@ -55,7 +55,9 @@ const News = () => {
         <div className="news__events__section">
           <h2>Предстоящие мероприятия</h2>
           <div className="news__events__content">
-            <Slider />
+            <Suspense fallback={<div>Загрузка слайдера...</div>}>
+              <SliderLoading />
+            </Suspense>
           </div>
         </div>
       </div>

@@ -1,4 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState,
+  useEffect,
+  lazy,
+  Suspense,
+  useMemo,
+  useCallback,
+} from 'react';
 import { connect } from 'react-redux';
 import PageContainer from '../PageContainer/PageContainer';
 import './Home.scss';
@@ -11,10 +18,16 @@ const mapStateToProps = (state) => ({
   courseData: state.courseData.courseData,
   loading: state.courseData.loading,
 });
+
 const mapDispatchToProps = (dispatch) => ({
   fetchEvents: () => dispatch(fetchEvents()),
   fetchCourseData: () => dispatch(fetchCourseData()),
 });
+
+const CourseSectionLazy = lazy(
+  () => import('./../../components/Course/CoursesSection')
+);
+
 const Home = ({
   events,
   courseData,
@@ -27,11 +40,21 @@ const Home = ({
     fetchCourseData();
   }, [fetchEvents, fetchCourseData]);
 
+  const memoizedForm = useMemo(() => <Form />, []);
+  const memoizedCourseSectionLazy = useCallback(
+    () => (
+      <Suspense fallback={<div>Загрузка курсов...</div>}>
+        <CourseSectionLazy courseData={courseData} />
+      </Suspense>
+    ),
+    [courseData]
+  );
+
   return (
     <div className="home">
       <h1>Добро пожаловать в личный кабинет</h1>
-      <Form />
-      <CoursesSection courseData={courseData} loading={loading} />
+      {memoizedForm}
+      {memoizedCourseSectionLazy()}
     </div>
   );
 };

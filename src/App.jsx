@@ -4,10 +4,11 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import QuestionList from './components/QuestionList/QuestionList';
-import QuestionDetails from './components/QuestionDetails/QuestionDetails';
+import QuestionDetails from './components/CourseDetails/CourseDetails';
 import PageContainer from './pages/PageContainer/PageContainer';
 import './App.scss';
 import News from './pages/News/News';
+import CourseDetails from './components/CourseDetails/CourseDetails';
 
 const App = () => {
   return (
@@ -48,6 +49,17 @@ const App = () => {
                 </PageContainer>
               }
             />
+            <Route
+              path="/courses/:id"
+              element={
+                <PageContainer>
+                  <CourseDetails />{' '}
+                  {/* Компонент для отображения деталей курса */}
+                </PageContainer>
+              }
+            >
+              <Route path="/courses/:id" element={<CourseDetails />} />
+            </Route>
           </Routes>
         </main>
       </div>

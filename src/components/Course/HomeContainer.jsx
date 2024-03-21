@@ -1,5 +1,5 @@
 // HomeContainer.jsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
 import { fetchCourseData } from '../../store/actions/action';
 import CoursesSection from '../path_to/CoursesSection';
@@ -11,7 +11,12 @@ const HomeContainer = ({ courseData, loading, fetchCourseData }) => {
 
   console.log('HomeContainer courseData:', courseData);
 
-  return <CoursesSection courseData={courseData} loading={loading} />;
+  const MemoizedCoursesSection = useMemo(
+    () => <CoursesSection courseData={courseData} loading={loading} />,
+    [courseData, loading]
+  );
+
+  return MemoizedCoursesSection;
 };
 
 const mapStateToProps = (state) => ({
