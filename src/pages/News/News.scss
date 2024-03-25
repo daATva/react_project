@@ -30,6 +30,16 @@
     justify-content: center;
     height: 140px;
     padding: 1rem;
+    transition:
+      transform 0.4s,
+      box-shadow 0.4s; // Указываем transition в основном состоянии
+    cursor: pointer; // Это свойство можно оставить в основном состоянии, так как оно не анимируется
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
     h3,
     h4 {
       font-size: 1.5rem;
@@ -138,18 +148,18 @@
       }
 
       span {
-        font-size: 0.6rem;
+        font-size: 0.7rem;
       }
     }
 
     &__circle {
-      width: 40px;
-      height: 40px;
-      margin: 0 5px;
+      width: 50px;
+      height: 50px;
+      margin: 0 10px;
 
       p {
-        padding: 40px 0px 0px 0px;
-        font-size: 0.6rem;
+        padding: 50px 0px 0px 0px;
+        font-size: 0.7rem;
       }
     }
   }

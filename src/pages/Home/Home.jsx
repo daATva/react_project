@@ -1,18 +1,11 @@
-import React, {
-  useState,
-  useEffect,
-  lazy,
-  Suspense,
-  useMemo,
-  useCallback,
-} from 'react';
+// Home.jsx
+import React, { useEffect, lazy, Suspense, useMemo, useCallback } from 'react';
 import { connect } from 'react-redux';
-import PageContainer from '../PageContainer/PageContainer';
 import './Home.scss';
 import Form from '../../components/Form/Form';
-import CoursesSection from '../../components/Course/CoursesSection';
 import { fetchEvents, fetchCourseData } from '../../store/actions/action';
 
+// Функции для mapStateToProps и mapDispatchToProps для связи с Redux
 const mapStateToProps = (state) => ({
   events: state.events.events,
   courseData: state.courseData.courseData,
@@ -24,10 +17,12 @@ const mapDispatchToProps = (dispatch) => ({
   fetchCourseData: () => dispatch(fetchCourseData()),
 });
 
+// Ленивая загрузка компонента CoursesSection
 const CourseSectionLazy = lazy(
   () => import('./../../components/Course/CoursesSection')
 );
 
+// Компонент Home отображает приветствие, секцию курсов и форму
 const Home = ({
   events,
   courseData,
@@ -53,7 +48,6 @@ const Home = ({
   return (
     <div className="home">
       <h1>Добро пожаловать в личный кабинет</h1>
-      {memoizedForm}
       {memoizedCourseSectionLazy()}
     </div>
   );

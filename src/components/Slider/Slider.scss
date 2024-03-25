@@ -64,15 +64,10 @@
     bottom: 0;
     left: 0;
     padding: 30px 30px 30px 30px;
-    background-color: rgba(
-      0,
-      0,
-      0,
-      0.7
-    ); // Добавляем полупрозрачный черный фон для лучшей видимости текста
-    color: #fff; // Цвет текста
-    padding: 10px; // Отступы вокруг текста
-    box-sizing: border-box; // Учитываем padding и border в общей ширине и высоте
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
     width: 100%;
   }
 }
@@ -96,7 +91,7 @@
 
 @media (max-width: 1024px) {
   .event__item {
-    min-width: 100px;
+    min-width: 140px;
   }
   .event__text {
     width: 100%;
@@ -109,5 +104,12 @@
   }
   .news {
     padding: 1rem;
+  }
+}
+@media (max-width: 400px) {
+  .slider {
+    button {
+      padding: 10px;
+    }
   }
 }

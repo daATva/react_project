@@ -1,17 +1,21 @@
+// News.jsx
 import React, { Suspense, lazy } from 'react';
-import Slider from '../../components/Slider/Slider';
 import './News.scss';
 import Form from '../../components/Form/Form';
-// import { upcomingEvents } from '../../data/upcomingEvents.js';
 
-const NewsItem = ({ title, description, date }) => (
+// Компонент NewsItem отображает элемент новости
+const NewsItem = React.memo(({ title, description, date }) => (
   <div className="news__item">
     <h3>{title}</h3>
     <p>{description}</p>
     <span>{date}</span>
   </div>
-);
+));
+
+// Ленивая загрузка компонента Slider
 const SliderLoading = lazy(() => import('./../../components/Slider/Slider'));
+
+// Компонент News отображает новости, сотрудников месяца, предстоящие события и форму
 const News = () => {
   return (
     <div className="news">
@@ -19,31 +23,13 @@ const News = () => {
 
       <div className="news__content">
         <div className="news__content__persons">
-          <div className="news__group">
-            <div className="news__circle">
-              <p>Иван Иванов</p>
+          {Array.from({ length: 5 }, (_, index) => (
+            <div key={index} className="news__group">
+              <div className="news__circle">
+                <p>Иван Иванов</p>
+              </div>
             </div>
-          </div>
-          <div className="news__group">
-            <div className="news__circle">
-              <p>Иван Иванов</p>
-            </div>
-          </div>
-          <div className="news__group">
-            <div className="news__circle">
-              <p>Иван Иванов</p>
-            </div>
-          </div>
-          <div className="news__group">
-            <div className="news__circle">
-              <p>Иван Иванов</p>
-            </div>
-          </div>
-          <div className="news__group">
-            <div className="news__circle">
-              <p>Иван Иванов</p>
-            </div>
-          </div>
+          ))}
         </div>
         <div className="news__course">
           <NewsItem

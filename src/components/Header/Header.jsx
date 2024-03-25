@@ -1,3 +1,4 @@
+// Header.jsx
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.scss';
@@ -14,6 +15,7 @@ const Header = () => {
   const toggleNav = () => {
     setIsNavVisible(!isNavVisible);
   };
+
   const navbarHide = (path) => {
     navigate(path);
     setIsNavVisible(false);
@@ -46,7 +48,7 @@ const Header = () => {
               </li>
               <li>
                 <div className="header-group">
-                  <img src={news} alt="news__logo" className="logo" />
+                  <img src={news} alt="News Icon" className="logo" />
                   <Link to="/News" onClick={() => navbarHide('/News')}>
                     Новости
                   </Link>
@@ -54,8 +56,7 @@ const Header = () => {
               </li>
               <li>
                 <div className="header-group">
-                  <img src={education} alt="education__logo" className="logo" />
-
+                  <img src={education} alt="Education Icon" className="logo" />
                   <Link
                     to="/interview"
                     onClick={() => navbarHide('/interview')}
@@ -66,7 +67,7 @@ const Header = () => {
               </li>
               <li>
                 <div className="header-group">
-                  <img src={test} alt="test__logo" className="logo" />
+                  <img src={test} alt="Test Icon" className="logo" />
                   <Link to="/about" onClick={() => navbarHide('/about')}>
                     Тесты
                   </Link>
