@@ -5,7 +5,7 @@
 [![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)](https://redux.js.org/)
 [![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
 
-Soft Up - это инновационная CRM-система, разработанная для повышения эффективности работы команд и личной продуктивности. Приложение построено на передовых технологиях, таких как React, Redux и SCSS, и предоставляет интерактивный интерфейс для развития softskills, мотивации и совместной работы.
+Soft Up - это инновационная CRM-система, разработанная для повышения софтскилов , эффективности работы команды и личной продуктивности. Приложение построено на передовых технологиях, таких как React, Redux и SCSS.
 
 ## Ключевые возможности
 
