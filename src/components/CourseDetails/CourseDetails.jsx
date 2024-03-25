@@ -1,11 +1,13 @@
+// CourseDetails.jsx
 import React from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import './CourseDetails.scss';
 
+// Компонент CourseDetails отображает подробную информацию о выбранном курсе
 const CourseDetails = () => {
-  const { id } = useParams();
   const { state } = useLocation();
   const course = state || {};
+
   return (
     <div className="course__group">
       <h1>{course.title}</h1>

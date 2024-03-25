@@ -1,13 +1,10 @@
 .app {
   min-height: 100vh;
   display: flex;
-  min-height: 100vh;
-  display: flex;
-  // background: url('../public/Imagies/top-bg-2.png') no-repeat center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 main {

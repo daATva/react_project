@@ -1,17 +1,19 @@
+// CoursesSection.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { courses } from '../../data/course'; // Импортируйте данные курсов из файла course.js
 import './CoursesSection.scss';
 import LazyImage from '../../utils/LazyImage';
 
+// Компонент CoursesSection отображает список доступных курсов
 const CoursesSection = ({ courseData, loading }) => {
   const navigate = useNavigate();
 
+  // Функция для перехода на страницу подробной информации о курсе
   const handleCourseClick = (course) => {
     navigate(`/courses/${course.id}`, { state: course });
   };
 
-  const coursesData = courseData || courses; // Используйте данные из courseData или courses
+  const coursesData = courseData || courses;
 
   return (
     <div className="courses-section">
