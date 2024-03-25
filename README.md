@@ -1,8 +1,64 @@
-# React + Vite
+# Soft Up
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
+[![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)](https://redux.js.org/)
+[![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
 
-Currently, two official plugins are available:
+Soft Up - это инновационная CRM-система, разработанная для повышения эффективности работы команд и личной продуктивности. Приложение построено на передовых технологиях, таких как React, Redux и SCSS, и предоставляет интерактивный интерфейс для развития softskills, мотивации и совместной работы.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Ключевые возможности
+
+На данный момент приложение разрабатывается и реализован не весь функционал
+
+### Уже реализовано:
+
+- **Обучающие курсы**: Широкий выбор курсов для развития софт скилов, включая управление временем, командную работу, коммуникацию и многое другое. Детальная информация о каждом курсе, источниках и методах обучения.
+
+- **Календарь мероприятий**: Интерактивный слайдер с информацией о предстоящих тренингах, семинарах и других мероприятиях, связанных с развитием софтскилов. Возможность просматривать детали и выбирать опции участия.
+
+- **Новости**: Раздел с новостями, обновлениями и информацией о сотрудниках, достигших выдающихся результатов в текущем месяце.
+
+### В разработке:
+
+- **Отслеживание прогресса**: Пользователи могут легко отслеживать свой прогресс в изучении курсов, видеть пройденные и оставшиеся модули.
+
+## Технологический стек
+
+- **React**: Библиотека для создания высокопроизводительных пользовательских интерфейсов.
+- **Redux**: Централизованное управление состоянием приложения и обработка асинхронных операций с помощью redux-thunk.
+- **SCSS**: Препроцессор CSS для организованной и масштабируемой стилизации компонентов.
+- **React Router**: Маршрутизация и навигация в одностраничном приложении.
+- **Axios**: Гибкая библиотека для выполнения HTTP-запросов и работы с API.
+
+## Установка
+
+1. Клонируйте этот репозиторий:
+
+```bash
+git clone https://github.com/your-username/softup.git
+```
+
+2. Перейдите в директорию проекта:
+
+```bash
+cd softup
+```
+
+3. Установите зависимости:
+
+```bash
+npm install
+```
+
+4. Запустите приложение в режиме разработки:
+
+```bash
+npm start
+```
+
+Приложение будет доступно по адресу [http://localhost:3000](http://localhost:3000) в вашем браузере.
+
+## Лицензия
+
+Этот проект распространяется под лицензией MIT. Подробности см. в файле [LICENSE](LICENSE).
