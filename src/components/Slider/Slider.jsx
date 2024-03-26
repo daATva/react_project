@@ -7,7 +7,6 @@ import { fetchEvents } from '../../store/actions/action';
 import Cookies from 'js-cookie';
 import useWindowWidth from '../../utils/useWindowWidth';
 
-// Компонент EventItem отрисовывает один элемент события
 const EventItem = React.memo(
   ({ Name, startDate, Image, onItemClick, choice }) => (
     <div className={`event__item ${choice}`} onClick={() => onItemClick(Name)}>
@@ -20,13 +19,11 @@ const EventItem = React.memo(
   )
 );
 
-// Компонент Slider обрабатывает основную логику
 const Slider = () => {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.events.events);
   const windowWidth = useWindowWidth();
 
-  // Загружаем события при монтировании компонента
   useEffect(() => {
     dispatch(fetchEvents());
   }, [dispatch]);
@@ -40,13 +37,11 @@ const Slider = () => {
     return cookieChoices ? JSON.parse(cookieChoices) : {};
   });
 
-  // Закрываем модальное окно и сбрасываем выбранное событие
   const closeModal = useCallback(() => {
     setModalOpen(false);
     setSelectedEvent(null);
   }, []);
 
-  // Обрабатываем выбор пользователя для события
   const handleChoice = useCallback(
     (Name, choiceClass) => {
       const newChoices = { ...choices, [Name]: choiceClass };
@@ -57,7 +52,6 @@ const Slider = () => {
     [choices, closeModal]
   );
 
-  // Устанавливаем количество слайдов для показа в зависимости от ширины окна
   useEffect(() => {
     if (windowWidth < 1300) {
       setSlidesToShow(2);
@@ -69,7 +63,6 @@ const Slider = () => {
     }
   }, [windowWidth]);
 
-  // Очищаем cookie выбора событий каждую минуту
   useEffect(() => {
     Modal.setAppElement('#root');
     const clearCookies = () => {
@@ -82,21 +75,18 @@ const Slider = () => {
     return () => clearInterval(intervalId);
   }, []);
 
-  // Переходим к предыдущему слайду
   const goToPrevious = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex - 1 < 0 ? events.length - slidesToShow : prevIndex - 1
     );
   }, [events.length, slidesToShow]);
 
-  // Переходим к следующему слайду
   const goToNext = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex + 1 > events.length - slidesToShow ? 0 : prevIndex + 1
     );
   }, [events.length, slidesToShow]);
 
-  // Открываем модальное окно для выбранного события
   const openModal = useCallback(
     (Name) => {
       const event = events.find((e) => e.Name === Name);

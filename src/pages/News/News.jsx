@@ -1,8 +1,7 @@
 // News.jsx
 import React, { Suspense, lazy } from 'react';
 import './News.scss';
-import Form from '../../components/Form/Form';
-import PageContainer from '../PageContainer/PageContainer';
+import { Form, PageContainer } from '../../components/index';
 
 const NewsItem = React.memo(({ title, description, date }) => (
   <div className="news__item">
@@ -19,7 +18,6 @@ const News = () => {
     <PageContainer>
       <div className="news">
         <h2>Сотрудники месяца</h2>
-
         <div className="news__content">
           <div className="news__content__persons">
             {Array.from({ length: 5 }, (_, index) => (

@@ -2,9 +2,9 @@
 import React, { useEffect, lazy, Suspense, useMemo, useCallback } from 'react';
 import { connect } from 'react-redux';
 import './Home.scss';
-import Form from '../../components/Form/Form';
 import { fetchEvents, fetchCourseData } from '../../store/actions/action';
-import PageContainer from '../PageContainer/PageContainer'; // Import PageContainer
+import { Form, PageContainer } from '../../components/index';
+
 const mapStateToProps = (state) => ({
   events: state.events.events,
   courseData: state.courseData.courseData,

@@ -2,7 +2,7 @@
 import React from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import './CourseDetails.scss';
-import PageContainer from '../../pages/PageContainer/PageContainer';
+import PageContainer from '../PageContainer/PageContainer';
 
 const CourseDetails = () => {
   const { state } = useLocation();

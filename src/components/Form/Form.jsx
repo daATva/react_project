@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import './Form.scss';
 
-function Form() {
+export const Form = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
@@ -19,6 +19,6 @@ function Form() {
       <button type="submit">Отправить</button>
     </form>
   );
-}
+};
 
 export default Form;
