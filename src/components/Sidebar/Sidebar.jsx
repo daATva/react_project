@@ -1,12 +1,8 @@
 // Header.jsx
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Header.scss';
-import logo from '/Imagies/header-logo.png';
-import news from '/Imagies/header-news.svg';
-import account from '/Imagies/header-private-account.svg';
-import test from '/Imagies/header-tests.svg';
-import education from '/Imagies/header-education.svg';
+import './Sidebar.scss';
+import { logo, news, account, test, education } from '/public/Imagies/imagies';
 
 const Header = () => {
   const [isNavVisible, setIsNavVisible] = useState(false);

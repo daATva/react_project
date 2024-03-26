@@ -36,13 +36,13 @@ Soft Up - это инновационная CRM-система, разработ
 1. Клонируйте этот репозиторий:
 
 ```bash
-git clone https://github.com/your-username/softup.git
+git clone https://github.com/daATva/react_project
 ```
 
 2. Перейдите в директорию проекта:
 
 ```bash
-cd softup
+cd react_project
 ```
 
 3. Установите зависимости:

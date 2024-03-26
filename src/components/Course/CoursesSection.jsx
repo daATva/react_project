@@ -4,11 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import './CoursesSection.scss';
 import LazyImage from '../../utils/LazyImage';
 
-// Компонент CoursesSection отображает список доступных курсов
 const CoursesSection = ({ courseData, loading }) => {
   const navigate = useNavigate();
 
-  // Функция для перехода на страницу подробной информации о курсе
   const handleCourseClick = (course) => {
     navigate(`/courses/${course.id}`, { state: course });
   };
