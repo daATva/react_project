@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.scss';
-import { Sidebar, Footer, CourseDetails } from './components';
-import { Home, News } from './pages';
+import { Sidebar, Footer } from './components';
+import { routes } from './routes/routes';
 
 const App = () => {
   return (
@@ -11,9 +11,9 @@ const App = () => {
         <Sidebar />
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/News" element={<News />} />
-            <Route path="/courses/:id" element={<CourseDetails />} />
+            {routes.map((route, index) => (
+              <Route key={index} path={route.path} element={route.element} />
+            ))}
           </Routes>
         </main>
       </div>

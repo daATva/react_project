@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Sidebar.scss';
-import { logo, news, account, test, education } from '/public/Imagies/imagies';
+import { logo, news, account, test, education } from '../../Imagies/imagies';
 
 const Header = () => {
   const [isNavVisible, setIsNavVisible] = useState(false);
