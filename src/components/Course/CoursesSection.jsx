@@ -2,7 +2,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CoursesSection.scss';
-import LazyImage from '../../utils/LazyImage';
 
 const CoursesSection = ({ courseData, loading }) => {
   const navigate = useNavigate();
@@ -23,7 +22,7 @@ const CoursesSection = ({ courseData, loading }) => {
             className="course-card"
             onClick={() => handleCourseClick(course)}
           >
-            <LazyImage src={course.image} alt={course.title} />
+            <img src={course.image} alt={course.title} />
             <h3>{course.title}</h3>
             <p>
               Пройдено: {course.passedCount} из {course.totalCount}
