@@ -4,12 +4,13 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
 [![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)](https://redux.js.org/)
 [![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
-
-Soft Up - это инновационная CRM-система, разработанная для повышения софтскилов , эффективности работы команды и личной продуктивности. Приложение построено на передовых технологиях, таких как React, Redux и SCSS.
+[![Vite](https://img.shields.io/badge/vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
+[![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)](https://eslint.org/)
+[![Prettier](https://img.shields.io/badge/prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black)](https://prettier.io/)
 
 ## Ключевые возможности
 
-На данный момент приложение разрабатывается и реализован не весь функционал
+На данный момент приложение разрабатывается и реализован не весь функционал.
 
 ### Уже реализовано:
 
@@ -23,13 +24,18 @@ Soft Up - это инновационная CRM-система, разработ
 
 - **Отслеживание прогресса**: Пользователи могут легко отслеживать свой прогресс в изучении курсов, видеть пройденные и оставшиеся модули.
 
+- **Рекомендации курсов**: На основе пройденных курсов и тестов буду рекомендоваться индивидуальные курсы.
+
+- **Тесты**: Пройдя данные тесты , можно будет определить сильные и слабые стороны сотрудника.
+
 ## Технологический стек
 
 - **React**: Библиотека для создания высокопроизводительных пользовательских интерфейсов.
 - **Redux**: Централизованное управление состоянием приложения и обработка асинхронных операций с помощью redux-thunk.
 - **SCSS**: Препроцессор CSS для организованной и масштабируемой стилизации компонентов.
-- **React Router**: Маршрутизация и навигация в одностраничном приложении.
 - **Axios**: Гибкая библиотека для выполнения HTTP-запросов и работы с API.
+- **Vite**: Современный сборщик, предлагающий оптимизированную сборку и мгновенную перезагрузку модулей.
+- **Eslint + Prettier**: Инструменты для форматирования и анализа кода.
 
 ## Установка
 
