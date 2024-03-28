@@ -60,7 +60,7 @@ npm install
 4. Запустите приложение в режиме разработки:
 
 ```bash
-npm start
+npm run dev
 ```
 
 Приложение будет доступно по адресу [http://localhost:3000](http://localhost:3000) в вашем браузере.
