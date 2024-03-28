@@ -8,7 +8,7 @@ export const routes = [
     element: <Home />,
   },
   {
-    path: '/News',
+    path: '/news',
     element: <News />,
   },
   {
