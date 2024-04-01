@@ -63,7 +63,7 @@ npm install
 npm run dev
 ```
 
-Приложение будет доступно по адресу [http://localhost:3000](http://localhost:3000) в вашем браузере.
+Приложение будет доступно по адресу [http://localhost:5173](http://localhost:5173) в вашем браузере.
 
 ## Лицензия
 
