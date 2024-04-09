@@ -7,15 +7,7 @@ import { fetchEvents } from '../../store/actions/action';
 import Cookies from 'js-cookie';
 import useWindowWidth from '../../utils/useWindowWidth';
 
-interface EventItemProps {
-  Name: string;
-  startDate: string;
-  Image: string;
-  onItemClick: (Name: string) => void;
-  choice?: string;
-}
-
-const EventItem = React.memo<EventItemProps>(
+const EventItem = React.memo(
   ({ Name, startDate, Image, onItemClick, choice }) => (
     <div className={`event__item ${choice}`} onClick={() => onItemClick(Name)}>
       <img src={Image} alt={Name} loading="lazy" />
@@ -27,32 +19,20 @@ const EventItem = React.memo<EventItemProps>(
   )
 );
 
-interface EventState {
-  events: {
-    Name: string;
-    startDate: string;
-    Image: string;
-  }[];
-}
-
-const Slider: React.FC = () => {
+const Slider = () => {
   const dispatch = useDispatch();
-  const events = useSelector<EventState, EventState['events']>(
-    (state) => state.events.events
-  );
+  const events = useSelector((state) => state.events.events);
   const windowWidth = useWindowWidth();
 
   useEffect(() => {
-    dispatch<Promise<void>>(fetchEvents());
+    dispatch(fetchEvents());
   }, [dispatch]);
 
-  const [slidesToShow, setSlidesToShow] = useState<number>(3);
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [selectedEvent, setSelectedEvent] = useState<
-    EventState['events'][0] | null
-  >(null);
-  const [choices, setChoices] = useState<{ [key: string]: string }>(() => {
+  const [slidesToShow, setSlidesToShow] = useState(3);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [choices, setChoices] = useState(() => {
     const cookieChoices = Cookies.get('eventChoices');
     return cookieChoices ? JSON.parse(cookieChoices) : {};
   });
@@ -63,10 +43,7 @@ const Slider: React.FC = () => {
   }, []);
 
   const handleChoice = useCallback(
-    (
-      Name: string,
-      choiceClass: 'know-button' | 'close-button' | 'remind-button'
-    ) => {
+    (Name, choiceClass) => {
       const newChoices = { ...choices, [Name]: choiceClass };
       setChoices(newChoices);
       Cookies.set('eventChoices', JSON.stringify(newChoices), { expires: 7 });
@@ -111,9 +88,9 @@ const Slider: React.FC = () => {
   }, [events.length, slidesToShow]);
 
   const openModal = useCallback(
-    (Name: string) => {
+    (Name) => {
       const event = events.find((e) => e.Name === Name);
-      setSelectedEvent(event || null);
+      setSelectedEvent(event);
       setModalOpen(true);
     },
     [events]
@@ -144,12 +121,14 @@ const Slider: React.FC = () => {
           contentLabel="Event Modal"
           Name={selectedEvent.Name}
           Image={selectedEvent.Image}
-          onChoiceMade={(choiceClass) =>
-            handleChoice(
-              selectedEvent.Name,
-              choiceClass as 'know-button' | 'close-button' | 'remind-button'
-            )
-          }
+          onChoiceMade={(choiceClass) => {
+            const classMap = {
+              'know-button': 'know',
+              'close-button': 'dont-know',
+              'remind-button': 'remind',
+            };
+            handleChoice(selectedEvent.Name, classMap[choiceClass]);
+          }}
         />
       )}
     </div>

@@ -16,7 +16,10 @@ interface CoursesSectionProps {
   loading: boolean;
 }
 
-const CoursesSection: React.FC<CoursesSectionProps> = ({ courseData, loading }) => {
+const CoursesSection: React.FC<CoursesSectionProps> = ({
+  courseData,
+  loading,
+}) => {
   const navigate = useNavigate();
 
   const handleCourseClick = (course: CourseData) => {

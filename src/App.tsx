@@ -1,10 +1,11 @@
+// src/App.tsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.scss';
 import { Sidebar, Footer } from './components';
 import { routes } from './routes/routes';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <Router>
       <div className="app">

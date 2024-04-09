@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch: any) => ({
 });
 
 const CourseSectionLazy = lazy(
-  () => import('./../../components/Course/CoursesSection')
+  () => import('../../components/Course/CoursesSection')
 );
 
 const Home: React.FC<HomeProps> = ({

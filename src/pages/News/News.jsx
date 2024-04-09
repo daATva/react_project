@@ -1,15 +1,9 @@
-// News.tsx
+// News.jsx
 import React, { Suspense, lazy } from 'react';
 import './News.scss';
 import { Form, PageContainer } from '../../components/index';
 
-interface NewsItemProps {
-  title: string;
-  description: string;
-  date: string;
-}
-
-const NewsItem = React.memo(({ title, description, date }: NewsItemProps) => (
+const NewsItem = React.memo(({ title, description, date }) => (
   <div className="news__item">
     <h3>{title}</h3>
     <p>{description}</p>
@@ -19,7 +13,7 @@ const NewsItem = React.memo(({ title, description, date }: NewsItemProps) => (
 
 const SliderLoading = lazy(() => import('./../../components/Slider/Slider'));
 
-const News: React.FC = () => {
+const News = () => {
   return (
     <PageContainer>
       <div className="news">
