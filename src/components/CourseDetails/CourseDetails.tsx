@@ -1,12 +1,25 @@
-// CourseDetails.jsx
+// CourseDetails.tsx
 import React from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import './CourseDetails.scss';
 import PageContainer from '../PageContainer/PageContainer';
 
-const CourseDetails = () => {
+interface Source {
+  title: string;
+  url: string;
+}
+
+interface CourseData {
+  title: string;
+  description: string;
+  sources: Source[];
+  duration: string;
+  learningMethods: string[];
+}
+
+const CourseDetails: React.FC = () => {
   const { state } = useLocation();
-  const course = state || {};
+  const course: CourseData = state || {};
 
   return (
     <PageContainer>

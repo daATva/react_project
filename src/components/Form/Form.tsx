@@ -1,11 +1,15 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import './Form.scss';
 
-export const Form = () => {
-  const { register, handleSubmit } = useForm();
+interface FormData {
+  inputValue: string;
+}
 
-  const onSubmit = (data) => {
+export const Form: React.FC = () => {
+  const { register, handleSubmit } = useForm<FormData>();
+
+  const onSubmit: SubmitHandler<FormData> = (data) => {
     console.log(data);
   };
 

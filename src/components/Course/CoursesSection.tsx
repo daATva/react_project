@@ -1,16 +1,29 @@
-// CoursesSection.jsx
+// CoursesSection.tsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CoursesSection.scss';
 
-const CoursesSection = ({ courseData, loading }) => {
+interface CourseData {
+  id: string;
+  image: string;
+  title: string;
+  passedCount: number;
+  totalCount: number;
+}
+
+interface CoursesSectionProps {
+  courseData: CourseData[];
+  loading: boolean;
+}
+
+const CoursesSection: React.FC<CoursesSectionProps> = ({ courseData, loading }) => {
   const navigate = useNavigate();
 
-  const handleCourseClick = (course) => {
+  const handleCourseClick = (course: CourseData) => {
     navigate(`/courses/${course.id}`, { state: course });
   };
 
-  const coursesData = courseData || courses;
+  const coursesData = courseData || [];
 
   return (
     <div className="courses-section">

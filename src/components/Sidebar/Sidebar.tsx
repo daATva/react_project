@@ -1,18 +1,18 @@
-// Header.jsx
+// Sidebar.tsx
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Sidebar.scss';
 import { logo, news, account, test, education } from '../../Imagies/imagies';
 
-const Header = () => {
-  const [isNavVisible, setIsNavVisible] = useState(false);
+const Header: React.FC = () => {
+  const [isNavVisible, setIsNavVisible] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const toggleNav = () => {
     setIsNavVisible(!isNavVisible);
   };
 
-  const navbarHide = (path) => {
+  const navbarHide = (path: string) => {
     navigate(path);
     setIsNavVisible(false);
   };
