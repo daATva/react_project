@@ -1,4 +1,4 @@
-// src/store/reducers/index.js
+// src/store/reducers/index.tsx
 import { combineReducers } from 'redux';
 import eventsReducer from './eventsReducer';
 import courseDataReducer from './courseDataReducer';
