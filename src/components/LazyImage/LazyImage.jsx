@@ -1,7 +1,6 @@
 // LazyImage.jsx
 import React, { useState, useEffect, useRef } from 'react';
 
-// Компонент LazyImage реализует ленивую загрузку изображений с использованием Intersection Observer API
 const LazyImage = ({ src, alt, ...props }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const imgRef = useRef(null);

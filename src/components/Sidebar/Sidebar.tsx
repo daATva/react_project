@@ -8,9 +8,7 @@ const Header: React.FC = () => {
   const [isNavVisible, setIsNavVisible] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  const toggleNav = () => {
-    setIsNavVisible(!isNavVisible);
-  };
+  const toggleNav = () => setIsNavVisible(!isNavVisible);
 
   const navbarHide = (path: string) => {
     navigate(path);

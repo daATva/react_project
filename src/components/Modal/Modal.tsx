@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import Modal from 'react-modal';
 import './Modal.scss';
 
-const EventImage = lazy(() => import('../../utils/LazyImage'));
+const EventImage = lazy(() => import('../LazyImage/LazyImage'));
 
 interface ModalContentProps {
   Name: string;
@@ -86,15 +86,6 @@ const EventModal: React.FC<EventModalProps> = ({
       onRequestClose={onRequestClose}
       contentLabel={contentLabel}
       style={{
-        overlay: {
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.7)',
-          padding: '0px 20px 0px 20px',
-        },
         content: {
           backgroundColor: 'rgba(0, 0, 0, 0.7)',
           maxWidth: '90vw',

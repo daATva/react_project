@@ -1,11 +1,27 @@
-// src/store/reducers/courseDataReducer.js
-const initialState = {
+// src/store/reducers/courseDataReducer.tsx
+import { Reducer } from 'redux';
+
+interface CourseDataState {
+  courseData: any[];
+  loading: boolean;
+  error: Error | null;
+}
+
+interface Action {
+  type: string;
+  payload?: any;
+}
+
+const initialState: CourseDataState = {
   courseData: [],
   loading: false,
   error: null,
 };
 
-export default function courseDataReducer(state = initialState, action) {
+const courseDataReducer: Reducer<CourseDataState, Action> = (
+  state = initialState,
+  action
+) => {
   switch (action.type) {
     case 'FETCH_COURSE_DATA_REQUEST':
       return { ...state, loading: true };
@@ -16,4 +32,6 @@ export default function courseDataReducer(state = initialState, action) {
     default:
       return state;
   }
-}
+};
+
+export default courseDataReducer;

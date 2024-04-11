@@ -5,18 +5,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import './Slider.scss';
 import { fetchEvents } from '../../store/actions/action';
 import Cookies from 'js-cookie';
-import useWindowWidth from '../../utils/useWindowWidth';
+import useWindowWidth from '../Hooks/useWindowWidth';
 
-const EventItem = React.memo(
-  ({ Name, startDate, Image, onItemClick, choice }) => (
-    <div className={`event__item ${choice}`} onClick={() => onItemClick(Name)}>
-      <img src={Image} alt={Name} loading="lazy" />
-      <div className="event__text">
-        <h4>{Name}</h4>
-        <span>{startDate}</span>
-      </div>
+// Много юз эффектов и юз колл беки убрать лишние , которые не нужны
+
+const EventItem = ({ Name, startDate, Image, onItemClick, choice }) => (
+  <div className={`event__item ${choice}`} onClick={() => onItemClick(Name)}>
+    <img src={Image} alt={Name} loading="lazy" />
+    <div className="event__text">
+      <h4>{Name}</h4>
+      <span>{startDate}</span>
     </div>
-  )
+  </div>
 );
 
 const Slider = () => {

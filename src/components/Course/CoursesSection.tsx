@@ -22,9 +22,8 @@ const CoursesSection: React.FC<CoursesSectionProps> = ({
 }) => {
   const navigate = useNavigate();
 
-  const handleCourseClick = (course: CourseData) => {
+  const handleCourseClick = (course: CourseData) =>
     navigate(`/courses/${course.id}`, { state: course });
-  };
 
   const coursesData = courseData || [];
 
