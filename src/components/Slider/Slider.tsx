@@ -2,14 +2,34 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Modal from 'react-modal';
 import EventModal from '../Modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
 import './Slider.scss';
-import { fetchEvents } from '../../store/actions/action';
+import { fetchEvents, EventAction } from '../../store/actions/action';
 import Cookies from 'js-cookie';
 import useWindowWidth from '../Hooks/useWindowWidth';
 
-// Много юз эффектов и юз колл беки убрать лишние , которые не нужны
+interface Event {
+  Name: string;
+  startDate: string;
+  Image: string;
+}
 
-const EventItem = ({ Name, startDate, Image, onItemClick, choice }) => (
+interface EventItemProps {
+  Name: string;
+  startDate: string;
+  Image: string;
+  onItemClick: (name: string) => void;
+  choice: string;
+}
+
+const EventItem: React.FC<EventItemProps> = ({
+  Name,
+  startDate,
+  Image,
+  onItemClick,
+  choice,
+}) => (
   <div className={`event__item ${choice}`} onClick={() => onItemClick(Name)}>
     <img src={Image} alt={Name} loading="lazy" />
     <div className="event__text">
@@ -19,20 +39,25 @@ const EventItem = ({ Name, startDate, Image, onItemClick, choice }) => (
   </div>
 );
 
-const Slider = () => {
-  const dispatch = useDispatch();
-  const events = useSelector((state) => state.events.events);
+interface State {
+  events: {
+    events: Event[];
+  };
+}
+const Slider: React.FC = () => {
+  const dispatch = useDispatch<ThunkDispatch<State, any, AnyAction>>();
+  const events = useSelector<State, Event[]>((state) => state.events.events);
   const windowWidth = useWindowWidth();
 
   useEffect(() => {
     dispatch(fetchEvents());
   }, [dispatch]);
 
-  const [slidesToShow, setSlidesToShow] = useState(3);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  const [choices, setChoices] = useState(() => {
+  const [slidesToShow, setSlidesToShow] = useState<number>(3);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+  const [choices, setChoices] = useState<{ [key: string]: string }>(() => {
     const cookieChoices = Cookies.get('eventChoices');
     return cookieChoices ? JSON.parse(cookieChoices) : {};
   });
@@ -43,7 +68,7 @@ const Slider = () => {
   }, []);
 
   const handleChoice = useCallback(
-    (Name, choiceClass) => {
+    (Name: string, choiceClass: string) => {
       const newChoices = { ...choices, [Name]: choiceClass };
       setChoices(newChoices);
       Cookies.set('eventChoices', JSON.stringify(newChoices), { expires: 7 });
@@ -88,10 +113,12 @@ const Slider = () => {
   }, [events.length, slidesToShow]);
 
   const openModal = useCallback(
-    (Name) => {
+    (Name: string) => {
       const event = events.find((e) => e.Name === Name);
-      setSelectedEvent(event);
-      setModalOpen(true);
+      if (event !== undefined) {
+        setSelectedEvent(event);
+        setModalOpen(true);
+      }
     },
     [events]
   );

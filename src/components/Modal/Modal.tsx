@@ -101,6 +101,10 @@ const EventModal: React.FC<EventModalProps> = ({
       }}
       overlayClassName="modal-overlay"
     >
+      <div className="modal-content">
+        <ModalContent Name={Name} Image={Image} />
+        <ModalButtons onChoiceMade={onChoiceMade} />
+      </div>
       <div className="blurred-background">
         <Suspense fallback={<div>Загрузка изображения...</div>}>
           <EventImage
@@ -109,11 +113,6 @@ const EventModal: React.FC<EventModalProps> = ({
             style={{ backgroundSize: '20%', filter: 'blur(15px)' }}
           />
         </Suspense>
-      </div>
-
-      <div className="modal-content">
-        <ModalContent Name={Name} Image={Image} />
-        <ModalButtons onChoiceMade={onChoiceMade} />
       </div>
     </Modal>
   );

@@ -43,10 +43,10 @@ const Home: React.FC<HomeProps> = ({
   const memoizedCourseSectionLazy = useCallback(
     () => (
       <Suspense fallback={<div>Загрузка курсов...</div>}>
-        <CourseSectionLazy courseData={courseData} />
+        <CourseSectionLazy courseData={courseData} loading={loading} />
       </Suspense>
     ),
-    [courseData]
+    [courseData, loading]
   );
 
   return (
