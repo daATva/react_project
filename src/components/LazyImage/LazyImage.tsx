@@ -1,9 +1,16 @@
 // LazyImage.jsx
 import React, { useState, useEffect, useRef } from 'react';
 
-const LazyImage = ({ src, alt, ...props }) => {
+interface LazyImageProps {
+  src: string;
+  alt: string;
+  height: number;
+  width: number;
+}
+
+const LazyImage: React.FC<LazyImageProps> = ({ src, alt, height, width, ...props }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const imgRef = useRef(null);
+  const imgRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -11,7 +18,7 @@ const LazyImage = ({ src, alt, ...props }) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsLoaded(true);
-            observer.unobserve(imgRef.current);
+            observer.unobserve(imgRef.current as Element);
           }
         });
       },
@@ -26,7 +33,7 @@ const LazyImage = ({ src, alt, ...props }) => {
 
     return () => {
       if (imgRef.current) {
-        observer.unobserve(imgRef.current);
+        observer.unobserve(imgRef.current as Element);
       }
     };
   }, []);
@@ -38,8 +45,8 @@ const LazyImage = ({ src, alt, ...props }) => {
       ) : (
         <div
           style={{
-            height: props.height,
-            width: props.width,
+            height,
+            width,
             backgroundColor: 'gray',
           }}
         />

@@ -29,7 +29,7 @@ const CoursesSection: React.FC<CoursesSectionProps> = ({
 
   return (
     <div className="courses-section">
-      <h2 className="courses-section__title">Обучающие курсы</h2>
+      <h2 className="courses-section__title">Обучающие курсы доступные вам</h2>
       <div className="courses-section__list">
         {coursesData.map((course) => (
           <div
