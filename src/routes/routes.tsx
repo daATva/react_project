@@ -1,6 +1,6 @@
-// routes.tsx
 import React from 'react';
-import { Home, News } from '../pages/index';
+import { Home, News, Test, Shop } from '../pages/index';
+import TestDetails from '../components/TestDetails/TestDetails';
 import { CourseDetails } from '../components/index';
 
 interface RouteType {
@@ -18,7 +18,19 @@ export const routes: RouteType[] = [
     element: <News />,
   },
   {
+    path: '/shop',
+    element: <Shop />,
+  },
+  {
     path: '/courses/:id',
     element: <CourseDetails />,
+  },
+  {
+    path: '/test',
+    element: <Test />,
+  },
+  {
+    path: '/test/:id',
+    element: <TestDetails />,
   },
 ];

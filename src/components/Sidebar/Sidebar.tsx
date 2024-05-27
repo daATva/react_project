@@ -51,18 +51,15 @@ const Header: React.FC = () => {
               <li>
                 <div className="header-group">
                   <img src={education} alt="Education Icon" className="logo" />
-                  <Link
-                    to="/interview"
-                    onClick={() => navbarHide('/interview')}
-                  >
-                    Обучение
+                  <Link to="/shop" onClick={() => navbarHide('/shop')}>
+                    Магазин
                   </Link>
                 </div>
               </li>
               <li>
                 <div className="header-group">
                   <img src={test} alt="Test Icon" className="logo" />
-                  <Link to="/about" onClick={() => navbarHide('/about')}>
+                  <Link to="/test" onClick={() => navbarHide('/test')}>
                     Тесты
                   </Link>
                 </div>

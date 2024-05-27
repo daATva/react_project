@@ -116,6 +116,7 @@ body {
   border-radius: 20px;
   background-color: rgba(29, 28, 33, 0.9019607843);
   @media (max-width: 1024px) {
+    z-index: 2;
     display: block;
     font-size: 1.5rem;
     border-radius: 20px 20px 20px 20px;

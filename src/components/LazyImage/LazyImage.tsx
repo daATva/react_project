@@ -1,4 +1,3 @@
-// LazyImage.jsx
 import React, { useState, useEffect, useRef } from 'react';
 
 interface LazyImageProps {
@@ -8,7 +7,13 @@ interface LazyImageProps {
   width: number;
 }
 
-const LazyImage: React.FC<LazyImageProps> = ({ src, alt, height, width, ...props }) => {
+const LazyImage: React.FC<LazyImageProps> = ({
+  src,
+  alt,
+  height,
+  width,
+  ...props
+}) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const imgRef = useRef<HTMLDivElement | null>(null);
 
@@ -41,7 +46,7 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt, height, width, ...props
   return (
     <div ref={imgRef}>
       {isLoaded ? (
-        <img src={src} alt={alt} {...props} />
+        <img src={src} alt={alt} height={height} width={width} {...props} />
       ) : (
         <div
           style={{

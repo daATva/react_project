@@ -1,0 +1,244 @@
+.cart-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.cart-modal {
+  background-color: #ffffff;
+  width: 400px;
+  max-height: 80%;
+  max-width: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 24px;
+      color: #333333;
+    }
+
+    .cart-modal__close {
+      font-size: 24px;
+      padding: 5px 15px 5px 15px;
+      margin: 5px 0px 10px 0px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #666666;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &-remove {
+      font-size: 24px;
+      margin: -10px 0px 0px 0px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #666666;
+      display: flex;
+      align-self: flex-start;
+      padding: 3px 7px 3px 7px;
+    }
+
+    &-quantity {
+      padding: 0px 0px 12px 0px;
+    }
+
+    &-image {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 20px;
+    }
+
+    &-details {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+
+      &-name {
+        font-size: 16px;
+        color: #333333;
+        margin-bottom: 4px;
+      }
+
+      &-brand,
+      &-color {
+        font-size: 14px;
+        color: #666666;
+      }
+    }
+
+    &-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+
+      button {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        width: 30px;
+        height: 30px;
+        padding: 5px 0px 0px 0px;
+        background: #f5f5f5;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        font-size: 18px;
+        color: #333333;
+        cursor: pointer;
+
+        &:disabled {
+          background: #e0e0e0;
+          cursor: not-allowed;
+        }
+
+        &:first-of-type {
+          margin-right: 10px;
+        }
+
+        &:last-of-type {
+          margin-left: 10px;
+        }
+      }
+
+      &-quantity {
+        font-size: 16px;
+        color: #333333;
+      }
+    }
+
+    &-price {
+      font-size: 16px;
+      padding: 0px 0px 10px 0px;
+      color: #333333;
+      white-space: nowrap;
+    }
+  }
+
+  &__footer {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h3 {
+      font-size: 20px;
+      color: #333333;
+      margin-bottom: 20px;
+    }
+
+    a {
+      text-decoration: none;
+      padding: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #44b4b8;
+      border: none;
+      border-radius: 15px;
+      color: #ffffff;
+      font-size: 16px;
+      cursor: pointer;
+
+      &:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .cart-modal {
+    &__content {
+      padding: 15px;
+    }
+
+    &__header {
+      h2 {
+        font-size: 20px;
+      }
+    }
+
+    &__item {
+      flex-wrap: wrap;
+      &-image {
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+      }
+      &-controls {
+        margin-right: 15px;
+
+        button {
+          width: 25px;
+          height: 25px;
+          font-size: 16px;
+        }
+
+        &-quantity {
+          font-size: 14px;
+        }
+      }
+      &-details {
+        &-name {
+          font-size: 14px;
+        }
+
+        &-brand,
+        &-color {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

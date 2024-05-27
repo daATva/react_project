@@ -107,11 +107,9 @@ const EventModal: React.FC<EventModalProps> = ({
       </div>
       <div className="blurred-background">
         <Suspense fallback={<div>Загрузка изображения...</div>}>
-          <EventImage
-            src={Image}
-            alt={Name}
-            style={{ backgroundSize: '20%', filter: 'blur(15px)' }}
-          />
+          <div style={{ backgroundSize: '100%', filter: 'blur(15px)' }}>
+            <EventImage src={Image} alt={Name} height={1000} width={1000} />
+          </div>
         </Suspense>
       </div>
     </Modal>

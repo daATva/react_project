@@ -1,0 +1,120 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  @include flex-center;
+  flex-direction: column;
+  margin: 16px;
+  border-radius: 15px;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+  &__image {
+    max-width: 220px;
+    height: auto;
+    border-radius: 15px;
+  }
+
+  &__content {
+    text-align: center;
+
+    &__name {
+      font-size: 1.5em;
+      margin: 8px 0;
+    }
+
+    &__description {
+      font-size: 1em;
+      margin: 8px 0;
+    }
+
+    &__price {
+      font-size: 1.2em;
+      margin: 8px 0;
+      color: #007b00;
+    }
+  }
+
+  &__actions {
+    @include flex-center;
+
+    button {
+      padding: 8px 16px;
+      margin: 0 8px;
+      font-size: 1.2em;
+      border: none;
+      cursor: pointer;
+      background-color: #007b00;
+      color: white;
+      border-radius: 15px;
+
+      &:disabled {
+        background-color: darken(#007b00, 20%);
+        cursor: not-allowed;
+      }
+    }
+
+    span {
+      font-size: 1.2em;
+      margin: 0 8px;
+    }
+  }
+
+  // Адаптивность
+  @media (max-width: 1200px) {
+    &__image {
+      max-width: 200px;
+    }
+
+    &__content &__name {
+      font-size: 1.3em;
+    }
+
+    &__content &__description {
+      font-size: 0.9em;
+    }
+
+    &__content &__price {
+      font-size: 1.1em;
+    }
+
+    &__actions button {
+      font-size: 1em;
+      padding: 8px 16px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__image {
+      max-width: 180px;
+    }
+
+    &__content &__name {
+      font-size: 1.1em;
+    }
+
+    &__content &__description {
+      font-size: 0.8em;
+    }
+
+    &__content &__price {
+      font-size: 1em;
+    }
+
+    &__actions button {
+      font-size: 0.9em;
+      padding: 6px 12px;
+    }
+  }
+}

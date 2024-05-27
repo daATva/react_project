@@ -1,0 +1,153 @@
+.test-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: auto;
+
+  h1 {
+    font-size: 2.5rem;
+    margin: 0px 0px 20px 0px;
+    color: #333;
+  }
+
+  img {
+    max-width: 40%;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #666;
+  }
+
+  .question-section {
+    width: 100%;
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      button {
+        color: #000;
+        background: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 15px 20px;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        width: 100%;
+        transition: all 0.3s ease;
+
+        &.selected {
+          background: #d1e7dd;
+          border-color: #0f5132;
+        }
+
+        &:hover {
+          background: #e0e0e0;
+        }
+      }
+    }
+  }
+
+  .back-to-tests {
+    background: #28a745;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border: none;
+    border-radius: 10px;
+    margin-top: 20px;
+
+    &:hover {
+      background: #218838;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    img {
+      max-width: 60%;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+
+    .question-section {
+      h2 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+      }
+
+      .options button {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
+    }
+
+    .back-to-tests {
+      padding: 8px 15px;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 5px;
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    img {
+      max-width: 80%;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
+
+    .question-section {
+      h2 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+
+      .options button {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+      }
+    }
+    .back-to-tests {
+      padding: 5px 10px;
+      font-size: 0.8rem;
+    }
+  }
+}

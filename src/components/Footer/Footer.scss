@@ -5,5 +5,8 @@
   text-align: center;
   display: block;
   flex-wrap: wrap;
-  min-width: 340px;
+  max-width: 100%;
+  p {
+    flex-wrap: wrap;
+  }
 }

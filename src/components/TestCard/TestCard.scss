@@ -1,0 +1,45 @@
+.test-card {
+  background: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  text-align: center;
+  transition: transform 0.3s ease;
+  max-width: 450px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &__image {
+    max-width: 200px;
+    height: 175px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  &__content {
+    padding: 5px;
+  }
+
+  &__name {
+    font-size: 1.25rem;
+    margin: 10px 0px 8px 0px;
+  }
+
+  &__description {
+    margin: 0px;
+    font-size: 1rem;
+    color: #666;
+  }
+}
+@media (max-width: 768px) {
+  .test-card {
+    flex-direction: column;
+    max-width: 200px;
+  }
+}
