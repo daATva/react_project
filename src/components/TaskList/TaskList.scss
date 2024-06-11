@@ -1,0 +1,146 @@
+.task-list {
+  .task-goal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+    h2 {
+      margin-bottom: 10px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    p {
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .main-task-list {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        width: 33%;
+        text-align: left;
+        font-weight: bold;
+        color: #666;
+      }
+    }
+  }
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  margin-bottom: 10px;
+  background: linear-gradient(145deg, #f3f3f3, #e7e7e7);
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    background 0.3s,
+    box-shadow 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &.completed {
+    background: linear-gradient(145deg, #e6ffec, #d4ffd1);
+
+    .task-name {
+      text-decoration: line-through;
+      color: #7d7d7d;
+    }
+
+    .completed-checkmark {
+      color: #f44336;
+    }
+  }
+
+  &.incomplete {
+    background: linear-gradient(145deg, #ffe6e6, #ffd1d1);
+
+    .incomplete-circle {
+      color: #4caf50;
+    }
+  }
+
+  .task-info {
+    display: flex;
+    flex-direction: column;
+
+    .task-name {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .task-dates {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #8c8c8c;
+    }
+  }
+
+  .task-status {
+    font-size: 20px;
+    color: #08ba38;
+    padding: 9px 12px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #6868684c;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition:
+      transform 0.2s,
+      background-color 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+      background-color: #f0f0f0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .task-list {
+    .task-goal {
+      .main-task-list {
+        flex-direction: column;
+        li {
+          width: 100%;
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  .task {
+    align-items: flex-start;
+    padding: 10px;
+
+    .task-info {
+      .task-name {
+        font-size: 14px;
+      }
+
+      .task-dates {
+        font-size: 12px;
+      }
+    }
+
+    .task-status {
+      align-self: flex-end;
+    }
+  }
+}

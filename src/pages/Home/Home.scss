@@ -3,7 +3,7 @@ h1 {
 }
 .courses-section {
   padding: 20px;
-  background: #fff; // Цвет фона в соответствии с дизайном
+  background: #fff;
 
   &__title {
     margin-bottom: 30px;
@@ -19,7 +19,7 @@ h1 {
 }
 
 .course-card {
-  width: calc(33.333% - 20px); // 3 карточки в ряд с учетом gap
+  width: calc(33.333% - 20px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
@@ -48,12 +48,12 @@ h1 {
 
 @media (max-width: 1024px) {
   .course-card {
-    width: calc(50% - 20px); // 2 карточки в ряд на планшетах
+    width: calc(50% - 20px);
   }
 }
 
 @media (max-width: 768px) {
   .course-card {
-    width: 100%; // 1 карточка в ряд на мобильных устройствах
+    width: 100%;
   }
 }

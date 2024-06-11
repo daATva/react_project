@@ -24,6 +24,8 @@ const Test: React.FC = () => {
       });
   }, []);
 
+  const filteredTests = tests.slice(0, 3); // Отображаем только первые три теста
+
   return (
     <PageContainer>
       <div className="test">
@@ -31,7 +33,7 @@ const Test: React.FC = () => {
           <h1>Тесты</h1>
         </header>
         <main className="test-main">
-          {tests.map((test) => (
+          {filteredTests.map((test) => (
             <div key={test.id} className="test-card-wrapper">
               <TestCard
                 id={test.id}

@@ -2,6 +2,8 @@ import React from 'react';
 import { Home, News, Test, Shop } from '../pages/index';
 import TestDetails from '../components/TestDetails/TestDetails';
 import { CourseDetails } from '../components/index';
+import Login from '../components/Login/Login';
+import Register from '../components/Register/Register';
 
 interface RouteType {
   path: string;
@@ -32,5 +34,13 @@ export const routes: RouteType[] = [
   {
     path: '/test/:id',
     element: <TestDetails />,
+  },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+  {
+    path: '/register',
+    element: <Register />,
   },
 ];

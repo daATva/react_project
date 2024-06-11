@@ -14,7 +14,7 @@ interface CartModalProps {
   }[];
   handleAddToCart: (id: number) => void;
   handleRemoveFromCart: (id: number) => void;
-  handleRemoveItem: (id: number) => void; // Add this new prop
+  handleRemoveItem: (id: number) => void;
   onClose: () => void;
 }
 
@@ -22,7 +22,7 @@ const CartModal: React.FC<CartModalProps> = ({
   cartItems,
   handleAddToCart,
   handleRemoveFromCart,
-  handleRemoveItem, // Add this new prop
+  handleRemoveItem,
   onClose,
 }) => {
   const totalPrice = cartItems.reduce(
